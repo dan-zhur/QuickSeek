@@ -1,0 +1,39 @@
+#pragma once
+
+#include "Config.h"
+#include "ModelBase.h"
+#include "ViewBase.h"
+
+
+class ModelBase;
+class ViewBase;
+
+
+class ControllerBase
+{
+public:
+	//types
+	using Char = config::Char;
+	using String = config::String;
+	//------------
+
+	//construction / deletion
+	virtual ~ControllerBase() {}
+	//------------
+
+	//pure virtual functions
+	virtual void Run() = 0;
+	virtual void SearchButtonPressed(String whatToSearch) = 0;
+	virtual void StopSearchButtonPressed() = 0;
+	//------------
+
+	//methods
+	void SetModel(ModelBase* model) { model_ = model; }
+	void SetView(ViewBase* view) { view_ = view; }
+	//------------
+protected:
+	//member variables
+	ModelBase* model_{ nullptr };
+	ViewBase* view_{ nullptr };
+	//------------
+};
