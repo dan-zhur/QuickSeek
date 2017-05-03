@@ -16,7 +16,7 @@ public:
 	//------------------------------
 
 	//construction / deletion
-	PrefixTree();
+	PrefixTree() = default;
 	~PrefixTree();
 	//------------------------------
 

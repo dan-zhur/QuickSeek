@@ -21,10 +21,10 @@ public:
 	virtual void ShowMainWindow() override;
 	virtual void AddPathToList(const String& path) override;
 	virtual void ClearList() override;
-	virtual void ShowScanningWindow(Char diskLetter) override;
-	virtual void SetScanningDiskLetter(Char diskLetter) override;
+	virtual void ShowScanningWindow(const Char& diskLetter) override;
+	virtual void SetScanningDiskLetter(const Char& diskLetter) override;
 	virtual void CloseScanningWindow() override;
-	virtual void NotifySearchButtonClicked(const String&) override;
+	virtual void NotifySearchButtonClicked(const String& whatToSearch) override;
 	//------------------------------
 private:
 	//member variables

@@ -18,19 +18,20 @@ public:
 	//------------
 
 	//construction / deletion
-	virtual ~ControllerBase() {}
+	virtual ~ControllerBase() = default;
 	//------------
 
 	//pure virtual functions
 	virtual void Run() = 0;
-	virtual void SearchButtonPressed(String whatToSearch) = 0;
+	virtual void SearchButtonPressed(const String& whatToSearch) = 0;
 	virtual void StopSearchButtonPressed() = 0;
 	//------------
 
 	//methods
-	void SetModel(ModelBase* model) { model_ = model; }
-	void SetView(ViewBase* view) { view_ = view; }
+	inline void SetModel(ModelBase* model) { model_ = model; }
+	inline void SetView(ViewBase* view) { view_ = view; }
 	//------------
+
 protected:
 	//member variables
 	ModelBase* model_{ nullptr };

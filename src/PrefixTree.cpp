@@ -4,17 +4,13 @@
 #include <algorithm>
 
 
-PrefixTree::PrefixTree()
-{
-
-}
-
 
 PrefixTree::~PrefixTree()
 {
 	StopSearch();
 	DeleteMemory_(root_);
 }
+
 
 
 void PrefixTree::DeleteMemory_(PrefixTree::Node_* ptr)
@@ -73,4 +69,14 @@ PrefixTree::Node_* PrefixTree::FindSymbolNodeAddress_(Char symbol, const std::fo
 		}
 	}
 	return nullptr;
+}
+
+
+
+void PrefixTree::WaitSearch()
+{
+	if(searchThread_.joinable())
+	{
+		searchThread_.join();
+	}
 }

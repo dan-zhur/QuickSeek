@@ -4,7 +4,7 @@
 
 
 
-void Model::SearchPrefix(String prefix, CallbackFunction callback)
+void Model::SearchPrefix(const String& prefix, CallbackFunction callback)
 {
 	prefixTree_.SearchByPrefix(prefix, callback);
 }

@@ -13,7 +13,7 @@ public:
 
 	//overriding methods
 	virtual void Run() override;
-	virtual void SearchButtonPressed(String whatToSearch) override;
+	virtual void SearchButtonPressed(const String& whatToSearch) override;
 	virtual void StopSearchButtonPressed() override;
 	//------------------------------
 

@@ -24,14 +24,14 @@ public:
 	virtual void ShowMainWindow() = 0;
 	virtual void AddPathToList(const String& path) = 0;
 	virtual void ClearList() = 0;
-	virtual void ShowScanningWindow(Char diskLetter) = 0;
-	virtual void SetScanningDiskLetter(Char diskLetter) = 0;
+	virtual void ShowScanningWindow(const Char& diskLetter) = 0;
+	virtual void SetScanningDiskLetter(const Char& diskLetter) = 0;
 	virtual void CloseScanningWindow() = 0;
 	virtual void NotifySearchButtonClicked(const String& whatToSearch) = 0;
 	//-----------
 
 	//methods
-	void SetController(ControllerBase* controller) { controller_ = controller; }
+	inline void SetController(ControllerBase* controller) { controller_ = controller; }
 	//-----------
 
 protected:

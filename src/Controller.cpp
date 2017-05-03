@@ -29,7 +29,7 @@ void Controller::RunHelper_()
 
 
 
-void Controller::SearchButtonPressed(String whatToSearch)
+void Controller::SearchButtonPressed(const String& whatToSearch)
 {
 	model_->StopSearch();
 	view_->ClearList();

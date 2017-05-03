@@ -34,7 +34,7 @@ void View::ClearList()
 
 
 
-void View::ShowScanningWindow(Char diskLetter)
+void View::ShowScanningWindow(const Char& diskLetter)
 {
 	scanningWindow_.Show();
 	SetScanningDiskLetter(diskLetter);
@@ -42,7 +42,7 @@ void View::ShowScanningWindow(Char diskLetter)
 
 
 
-void View::SetScanningDiskLetter(Char diskLetter)
+void View::SetScanningDiskLetter(const Char& diskLetter)
 {
 	scanningWindow_.SetDiskLetter(diskLetter);
 }
