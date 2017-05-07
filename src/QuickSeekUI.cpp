@@ -1,4 +1,4 @@
-#include "QuickSeekUI.h"
+﻿#include "QuickSeekUI.h"
 #include <qstringlistmodel.h>
 
 

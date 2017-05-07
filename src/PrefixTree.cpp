@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include "PrefixTree.h"
 #include <algorithm>

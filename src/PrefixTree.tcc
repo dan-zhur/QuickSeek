@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 
 #include "PrefixTree.h"
 
@@ -24,13 +24,13 @@ void PrefixTree::AddString(Iterator begin, Iterator end)
 	{
 		Char c = *begin;
 		Node_* cNode = FindSymbolNodeAddress_(c, ptr->nextNodes_);
-		if(cNode == nullptr) //если нет, то добавляем букву, чтобы был
+		if(cNode == nullptr) //РµСЃР»Рё РЅРµС‚, С‚Рѕ РґРѕР±Р°РІР»СЏРµРј Р±СѓРєРІСѓ, С‡С‚РѕР±С‹ Р±С‹Р»
 		{
 			Node_ *temp = new Node_();
 			ptr->nextNodes_.push_front(std::make_pair(c, temp));
 			ptr = temp;
 		}
-		else //если префикс в дереве есть, то просто переходим по указателю на следующую букву
+		else //РµСЃР»Рё РїСЂРµС„РёРєСЃ РІ РґРµСЂРµРІРµ РµСЃС‚СЊ, С‚Рѕ РїСЂРѕСЃС‚Рѕ РїРµСЂРµС…РѕРґРёРј РїРѕ СѓРєР°Р·Р°С‚РµР»СЋ РЅР° СЃР»РµРґСѓСЋС‰СѓСЋ Р±СѓРєРІСѓ
 		{
 			ptr = cNode;
 		}
@@ -54,27 +54,27 @@ template<typename Function>
 void PrefixTree::SearchByPrefixHelper_(String prefix, Function callback)
 {
 	Node_* ptr = SkipToPrefixEnd(prefix);
-	if(ptr) //если есть такой префикс
+	if(ptr) //РµСЃР»Рё РµСЃС‚СЊ С‚Р°РєРѕР№ РїСЂРµС„РёРєСЃ
 	{
 		GoSearch_(ptr, callback, prefix);
-		callback(String{}); //показывает, что поиск завершен
+		callback(String{}); //РїРѕРєР°Р·С‹РІР°РµС‚, С‡С‚Рѕ РїРѕРёСЃРє Р·Р°РІРµСЂС€РµРЅ
 		isSearchRunning_ = false;
 	}
 }
 
 
-//TODO: написать нерекурсивную версию
+//TODO: РЅР°РїРёСЃР°С‚СЊ РЅРµСЂРµРєСѓСЂСЃРёРІРЅСѓСЋ РІРµСЂСЃРёСЋ
 
 template<typename Function>
 void PrefixTree::GoSearch_(Node_* ptr, Function callback, String& str)
 {
-	//TODO: оптимизировать
+	//TODO: РѕРїС‚РёРјРёР·РёСЂРѕРІР°С‚СЊ
 	if(stopSearch_.load())
 	{
 		return;
 	}
 
-	//если в текущей вершине заканчивается некая строка
+	//РµСЃР»Рё РІ С‚РµРєСѓС‰РµР№ РІРµСЂС€РёРЅРµ Р·Р°РєР°РЅС‡РёРІР°РµС‚СЃСЏ РЅРµРєР°СЏ СЃС‚СЂРѕРєР°
 	if(ptr->isEndingNode_)
 	{
 		callback(str);

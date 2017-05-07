@@ -1,4 +1,4 @@
-#include "Model.h"
+п»ї#include "Model.h"
 #include <boost\filesystem.hpp>
 #include "Config.h"
 
@@ -57,7 +57,7 @@ namespace
 
 void Model::ScanFileSystem()
 {
-#if defined(__CONFIG_WINDOWS__) //если под Windows, нужно просканировать каждый диск
+#if defined(__CONFIG_WINDOWS__) //РµСЃР»Рё РїРѕРґ Windows, РЅСѓР¶РЅРѕ РїСЂРѕСЃРєР°РЅРёСЂРѕРІР°С‚СЊ РєР°Р¶РґС‹Р№ РґРёСЃРє
 	String path = L"A:\\";
 	view_->ShowScanningWindow(L' ');
 	for(wchar_t c = L'A'; c <= L'Z'; c++)
@@ -69,7 +69,7 @@ void Model::ScanFileSystem()
 			ScanFileSystemHelper_(path, prefixTree_);
 		}
 	}
-#else //если на Posix, то запускаем из корня
+#else //РµСЃР»Рё РЅР° Posix, С‚Рѕ Р·Р°РїСѓСЃРєР°РµРј РёР· РєРѕСЂРЅСЏ
 	ScanFileSystemHelper_("/", prefixTree);
 #endif
 }

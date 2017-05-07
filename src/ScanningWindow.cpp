@@ -1,4 +1,4 @@
-#include "ScanningWindow.h"
+﻿#include "ScanningWindow.h"
 
 
 

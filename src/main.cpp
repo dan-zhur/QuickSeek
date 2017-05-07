@@ -1,4 +1,4 @@
-#include <QtWidgets/QApplication>
+﻿#include <QtWidgets/QApplication>
 #include "Model.h"
 #include "Controller.h"
 #include "View.h"
