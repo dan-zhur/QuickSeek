@@ -1,7 +1,7 @@
 ﻿#pragma once
 
-#include "Config.h"
-#include "ControllerBase.h"
+#include "config.hpp"
+#include "controller_base.hpp"
 
 
 class ModelBase;

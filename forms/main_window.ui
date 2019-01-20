@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>QuickSeekUIClass</class>
- <widget class="QMainWindow" name="QuickSeekUIClass">
+ <class>main_windowClass</class>
+ <widget class="QMainWindow" name="main_windowClass">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -23,7 +23,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>QuickSeekUI</string>
+   <string>QuickSeek</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QListView" name="listView">
@@ -84,7 +84,7 @@
   <tabstop>listView</tabstop>
  </tabstops>
  <resources>
-  <include location="QuickSeekUI.qrc"/>
+  <include location="main_window.qrc"/>
  </resources>
  <connections/>
 </ui>

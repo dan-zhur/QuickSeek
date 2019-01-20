@@ -1,6 +1,7 @@
 ﻿#pragma once
 
-#include "PrefixTree.h"
+#include "prefix_tree.hpp"
+
 #include <algorithm>
 
 

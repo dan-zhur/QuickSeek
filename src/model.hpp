@@ -1,7 +1,7 @@
 ﻿#pragma once
 
-#include "ModelBase.h"
-#include "PrefixTree.h"
+#include "model_base.hpp"
+#include "prefix_tree.hpp"
 
 
 class Model : public ModelBase

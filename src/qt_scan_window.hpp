@@ -1,7 +1,8 @@
 ﻿#pragma once
 
+#include "../forms/ui_scan_window.h"
+
 #include <QWidget>
-#include "ui_ScanningWindow.h"
 
 class ScanningWindow : public QWidget
 {
@@ -26,5 +27,5 @@ private slots:
 	void CloseSlot();
 
 private:
-	Ui::ScanningWindow ui;
+	Ui::scan_windowClass ui;
 };

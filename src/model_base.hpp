@@ -1,8 +1,9 @@
 ﻿#pragma once
 
-#include "Config.h"
-#include "ControllerBase.h"
-#include "ViewBase.h"
+#include "config.hpp"
+#include "controller_base.hpp"
+#include "view_base.hpp"
+
 #include <functional>
 
 class ControllerBase;

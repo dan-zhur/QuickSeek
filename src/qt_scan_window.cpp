@@ -1,4 +1,4 @@
-﻿#include "ScanningWindow.h"
+﻿#include "qt_scan_window.hpp"
 
 
 
@@ -58,5 +58,5 @@ void ScanningWindow::SetDiskLetter(QChar diskLetter)
 
 void ScanningWindow::SetDiskLetterSlot(QChar diskLetter)
 {
-	ui.scanningDiskLabel->setText(diskLetter);
+	ui.scannedDiskLabel->setText(diskLetter);
 }

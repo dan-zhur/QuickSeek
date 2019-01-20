@@ -1,5 +1,5 @@
-﻿#include "QuickSeekUI.h"
-#include <qstringlistmodel.h>
+﻿#include "qt_main_window.hpp"
+#include <QStringListModel>
 
 
 QuickSeekUI::QuickSeekUI(ViewBase* view, QWidget *parent)

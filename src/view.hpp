@@ -1,8 +1,8 @@
 ﻿#pragma once
 
-#include "ViewBase.h"
-#include "QuickSeekUI.h"
-#include "ScanningWindow.h"
+#include "view_base.hpp"
+#include "qt_main_window.hpp"
+#include "qt_scan_window.hpp"
 
 
 class View : public ViewBase

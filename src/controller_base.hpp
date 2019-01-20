@@ -1,8 +1,8 @@
 ﻿#pragma once
 
-#include "Config.h"
-#include "ModelBase.h"
-#include "ViewBase.h"
+#include "config.hpp"
+#include "model_base.hpp"
+#include "view_base.hpp"
 
 
 class ModelBase;

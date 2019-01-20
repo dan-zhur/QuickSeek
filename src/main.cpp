@@ -1,7 +1,8 @@
-﻿#include <QtWidgets/QApplication>
-#include "Model.h"
-#include "Controller.h"
-#include "View.h"
+﻿#include "model.hpp"
+#include "controller.hpp"
+#include "view.hpp"
+
+#include <QApplication>
 
 
 int main(int argc, char *argv[])

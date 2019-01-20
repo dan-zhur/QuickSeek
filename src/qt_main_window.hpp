@@ -1,10 +1,12 @@
 ﻿#pragma once
 
+
+#include "../forms/ui_main_window.h"
+#include "view_base.hpp"
+
 #include <QtWidgets/QMainWindow>
-#include "ui_QuickSeekUI.h"
-#include <qlistview.h>
-#include <qstringlistmodel.h>
-#include "ViewBase.h"
+#include <QListview>
+#include <QStringListModel>
 
 
 class QuickSeekUI : public QMainWindow
@@ -37,7 +39,7 @@ private slots:
 
 private:
 	//member variables
-	Ui::QuickSeekUIClass ui;
+	Ui::main_windowClass ui;
 	QStringListModel stringListModel_;
 	QStringList pathStringList_;
 	ViewBase* view_;

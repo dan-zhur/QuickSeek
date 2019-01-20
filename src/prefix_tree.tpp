@@ -1,10 +1,4 @@
-﻿#pragma once
-
-#include "PrefixTree.h"
-
-
-
-template<typename Container>
+﻿template<typename Container>
 void PrefixTree::AddString(const Container& container)
 {
 	AddString(std::begin(container), std::end(container));

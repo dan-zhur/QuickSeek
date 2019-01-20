@@ -1,6 +1,7 @@
 ﻿#pragma once
 
-#include "Config.h"
+#include "config.hpp"
+
 #include <QChar>
 #include <atomic>
 #include <forward_list>
@@ -76,4 +77,4 @@ private:
 };
 
 
-#include "PrefixTree.tcc"
+#include "prefix_tree.tpp"

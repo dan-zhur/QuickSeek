@@ -1,6 +1,7 @@
-﻿#include "Model.h"
-#include <boost\filesystem.hpp>
-#include "Config.h"
+﻿#include "model.hpp"
+#include "config.hpp"
+
+#include <filesystem>
 
 
 
@@ -20,9 +21,9 @@ void Model::StopSearch()
 
 namespace
 {
-	void ScanFileSystemHelper_(const boost::filesystem::path& path, PrefixTree& prefixTree, int depth = 0)
+	void ScanFileSystemHelper_(const std::filesystem::path& path, PrefixTree& prefixTree, int depth = 0)
 	{
-		using namespace boost::filesystem;
+		using namespace std::filesystem;
 		if(depth == 3) return;
 		if(!exists(path))
 		{
@@ -63,7 +64,7 @@ void Model::ScanFileSystem()
 	for(wchar_t c = L'A'; c <= L'Z'; c++)
 	{
 		path[0] = c;
-		if(boost::filesystem::exists(path))
+		if(std::filesystem::exists(path))
 		{
 			view_->SetScanningDiskLetter(c);
 			ScanFileSystemHelper_(path, prefixTree_);

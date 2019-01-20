@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>ScanningWindow</class>
- <widget class="QWidget" name="ScanningWindow">
+ <class>scan_windowClass</class>
+ <widget class="QWidget" name="scan_windowClass">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -41,7 +41,7 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QLabel" name="scanningDiskLabel">
+  <widget class="QLabel" name="scannedDiskLabel">
    <property name="geometry">
     <rect>
      <x>70</x>
