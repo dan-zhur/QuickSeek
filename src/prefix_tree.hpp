@@ -1,7 +1,5 @@
 ﻿#pragma once
 
-#include "config.hpp"
-
 #include <QChar>
 #include <atomic>
 #include <forward_list>
@@ -11,11 +9,6 @@
 class PrefixTree
 {
 public:
-	//types
-	using Char = config::Char;
-	using String = config::String;
-	//------------------------------
-
 	//construction / deletion
 	PrefixTree() = default;
 	~PrefixTree();
@@ -29,7 +22,7 @@ public:
 	void AddString(Iterator begin, Iterator end);
 
 	template<typename Function>
-	void SearchByPrefix(const String& prefix, Function callback);
+	void SearchByPrefix(const std::string& prefix, Function callback);
 
 	void StopSearch();
 
@@ -39,7 +32,7 @@ private:
 	//types
 	struct Node_ {
 		bool isEndingNode_{ false }; //является ли последним для некоторого префикса
-		std::forward_list< std::pair<Char, Node_*> > nextNodes_;
+		std::forward_list< std::pair<std::string, Node_*> > nextNodes_;
 	};
 	//------------------------------
 
@@ -52,7 +45,7 @@ private:
 	В случае успеха, возвращает указатель на Node_, содержащий последний
 	символ строки. В случае, если такой префикс не найден, возвращает nullptr.
 	*/
-	Node_* SkipToPrefixEnd(const String& prefix);
+	Node_* SkipToPrefixEnd(const std::string& prefix);
 
 	/*
 	Для для префикса, заканчивающемся в *ptr, вызывает callback(begin, end),
@@ -60,12 +53,12 @@ private:
 	строку в дереве).
 	*/
 	template<typename Function>
-	void SearchByPrefixHelper_(String prefix, Function callback);
+	void SearchByPrefixHelper_(std::string prefix, Function callback);
 
 	template<typename Function>
-	void GoSearch_(Node_* ptr, Function callback, String& str);
+	void GoSearch_(Node_* ptr, Function callback, std::string& str);
 
-	Node_* FindSymbolNodeAddress_(Char symbol, const std::forward_list<std::pair<Char, Node_*>>& nodes);
+	Node_* FindSymbolNodeAddress_(const std::string& symbol, const std::forward_list<std::pair<std::string, Node_*>>& nodes);
 	//------------------------------
 
 

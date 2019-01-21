@@ -1,4 +1,5 @@
 ﻿#include "qt_main_window.hpp"
+
 #include <QStringListModel>
 
 
@@ -9,7 +10,7 @@ QuickSeekUI::QuickSeekUI(ViewBase* view, QWidget *parent)
 	ui.setupUi(this);
 	ui.listView->setModel(&stringListModel_);
 
-	QObject::connect(this, SIGNAL(AddStringSignal(QString)), SLOT(AddStringSlot(QString)), Qt::QueuedConnection);
+	QObject::connect(this, SIGNAL(Addstd::stringSignal(Qstd::string)), SLOT(Addstd::stringSlot(Qstd::string)), Qt::QueuedConnection);
 	QObject::connect(ui.pushButton, SIGNAL(clicked()), this, SLOT(ButtonClicked()), Qt::QueuedConnection);
 	QObject::connect(ui.listView, SIGNAL(doubleClicked(const QModelIndex&)), this, SLOT(ListDoubleClicked(const QModelIndex&)), Qt::QueuedConnection);
 	QObject::connect(this, SIGNAL(ShowSignal()), SLOT(ShowSlot()), Qt::QueuedConnection);
@@ -79,9 +80,5 @@ void QuickSeekUI::ListDoubleClicked(const QModelIndex& index)
 
 void QuickSeekUI::ButtonClicked()
 {	
-#if defined(__CONFIG_WINDOWS__)
-	view_->NotifySearchButtonClicked(ui.lineEdit->text().toStdWString());
-#else
 	view_->NotifySearchButtonClicked(ui.lineEdit->text().toStdString());
-#endif
 }

@@ -12,17 +12,17 @@ public:
 	ScanningWindow(QWidget *parent = Q_NULLPTR);
 	~ScanningWindow();
 
-	void SetDiskLetter(QChar diskLetter);
+	void SetDiskLetter(std::string diskLetter);
 	void Show();
 	void Close();
 
 signals:
-	void SetDiskLetterSignal(QChar diskLetter);
+	void SetDiskLetterSignal(std::string diskLetter);
 	void ShowSignal();
 	void CloseSignal();
 
 private slots:
-	void SetDiskLetterSlot(QChar diskLetter);
+	void SetDiskLetterSlot(std::string diskLetter);
 	void ShowSlot();
 	void CloseSlot();
 

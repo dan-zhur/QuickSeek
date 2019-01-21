@@ -13,7 +13,7 @@ public:
 
 	//overriding methods
 	virtual void ScanFileSystem() override;
-	virtual void SearchPrefix(const String& prefix, CallbackFunction callback) override;
+	virtual void SearchPrefix(const std::string& prefix, CallbackFunction callback) override;
 	virtual void StopSearch() override;
 	//------------
 private:

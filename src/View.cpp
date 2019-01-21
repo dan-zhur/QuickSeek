@@ -1,17 +1,5 @@
 ﻿#include "view.hpp"
 
-namespace
-{
-#if defined(__CONFIG_WINDOWS__)
-	inline QString ConfigStringToQString(const config::String& str) { return QString::fromStdWString(str); }
-	inline config::String QStringToConfigString(const QString& str) { return str.toStdWString(); }
-#else
-	inline QString ConfigStringToQString(const String& str) { return QString::fromStdString(str); }
-	inline String QStringToConfigString(const QString& str) { return str.toStdString(); }
-#endif
-}
-
-
 
 void View::ShowMainWindow()
 {
@@ -20,9 +8,9 @@ void View::ShowMainWindow()
 
 
 
-void View::AddPathToList(const String& path)
+void View::AddPathToList(const std::string& path)
 {
-	mainWindow_.AddPathToList(ConfigStringToQString(path));
+	mainWindow_.AddPathToList(QString::fromUtf8(path.c_str()));
 }
 
 
@@ -34,7 +22,7 @@ void View::ClearList()
 
 
 
-void View::ShowScanningWindow(const Char& diskLetter)
+void View::ShowScanningWindow(const std::string& diskLetter)
 {
 	scanningWindow_.Show();
 	SetScanningDiskLetter(diskLetter);
@@ -42,7 +30,7 @@ void View::ShowScanningWindow(const Char& diskLetter)
 
 
 
-void View::SetScanningDiskLetter(const Char& diskLetter)
+void View::SetScanningDiskLetter(const std::string& diskLetter)
 {
 	scanningWindow_.SetDiskLetter(diskLetter);
 }
@@ -56,7 +44,7 @@ void View::CloseScanningWindow()
 
 
 
-void View::NotifySearchButtonClicked(const String& str)
+void View::NotifySearchButtonClicked(const std::string& str)
 {
 	controller_->SearchButtonPressed(str);
 }

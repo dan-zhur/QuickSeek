@@ -1,10 +1,8 @@
 ﻿#include "qt_scan_window.hpp"
 
 
-
 ScanningWindow::ScanningWindow(QWidget *parent)
-	: QWidget(parent)
-{
+	: QWidget(parent) {
 	ui.setupUi(this);
 
 	QObject::connect(this, SIGNAL(SetDiskLetterSignal(QChar)), SLOT(SetDiskLetterSlot(QChar)), Qt::QueuedConnection);
@@ -13,50 +11,35 @@ ScanningWindow::ScanningWindow(QWidget *parent)
 }
 
 
-
-ScanningWindow::~ScanningWindow()
-{
+ScanningWindow::~ScanningWindow() {
 }
 
 
-
-
-void ScanningWindow::Show()
-{
+void ScanningWindow::Show() {
 	emit ShowSignal();
 }
 
 
-
-void ScanningWindow::ShowSlot()
-{
+void ScanningWindow::ShowSlot() {
 	show();
 }
 
 
-
-void ScanningWindow::Close()
-{
+void ScanningWindow::Close() {
 	emit CloseSignal();
 }
 
 
-
-void ScanningWindow::CloseSlot()
-{
+void ScanningWindow::CloseSlot() {
 	close();
 }
 
 
-
-void ScanningWindow::SetDiskLetter(QChar diskLetter)
-{
+void ScanningWindow::SetDiskLetter(std::string diskLetter) {
 	emit SetDiskLetterSignal(diskLetter);
 }
 
 
-
-void ScanningWindow::SetDiskLetterSlot(QChar diskLetter)
-{
-	ui.scannedDiskLabel->setText(diskLetter);
+void ScanningWindow::SetDiskLetterSlot(std::string diskLetter) {
+	ui.scannedDiskLabel->setText(QString::fromUtf8(diskLetter.c_str()));
 }

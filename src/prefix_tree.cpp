@@ -39,13 +39,12 @@ void PrefixTree::StopSearch()
 }
 
 
-PrefixTree::Node_* PrefixTree::SkipToPrefixEnd(const String& prefix)
+PrefixTree::Node_* PrefixTree::SkipToPrefixEnd(const std::string& prefix)
 {
 	Node_* ptr = root_;
-	for(auto it = std::begin(prefix); it != std::end(prefix); ++it)
+	for(const auto& c : prefix)
 	{
-		Char c = *it;
-		Node_* cNode = FindSymbolNodeAddress_(c, ptr->nextNodes_);
+		Node_* cNode = FindSymbolNodeAddress_({ c }, ptr->nextNodes_);
 		if(cNode == nullptr)
 		{
 			return nullptr;
@@ -60,7 +59,7 @@ PrefixTree::Node_* PrefixTree::SkipToPrefixEnd(const String& prefix)
 
 
 
-PrefixTree::Node_* PrefixTree::FindSymbolNodeAddress_(Char symbol, const std::forward_list<std::pair<Char, Node_*>>& nodes)
+PrefixTree::Node_* PrefixTree::FindSymbolNodeAddress_(const std::string& symbol, const std::forward_list<std::pair<std::string, Node_*>>& nodes)
 {
 	for(const auto& it : nodes)
 	{

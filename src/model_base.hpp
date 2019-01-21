@@ -1,10 +1,10 @@
 ﻿#pragma once
 
-#include "config.hpp"
 #include "controller_base.hpp"
 #include "view_base.hpp"
 
 #include <functional>
+#include <string>
 
 class ControllerBase;
 class ViewBase;
@@ -13,9 +13,7 @@ class ModelBase
 {
 public:
 	//types
-	using Char = config::Char;
-	using String = config::String;
-	using CallbackFunction = std::function<void(String)>;
+	using CallbackFunction = std::function<void(std::string)>;
 	//------------
 
 	//construction / deletion
@@ -24,7 +22,7 @@ public:
 
 	//pure virtual functions
 	virtual void ScanFileSystem() = 0;
-	virtual void SearchPrefix(const String& prefix, CallbackFunction callback) = 0;
+	virtual void SearchPrefix(const std::string& prefix, CallbackFunction callback) = 0;
 	virtual void StopSearch() = 0;
 	//------------
 

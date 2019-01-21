@@ -1,15 +1,12 @@
 ﻿#include "model.hpp"
-#include "config.hpp"
 
 #include <filesystem>
 
 
-
-void Model::SearchPrefix(const String& prefix, CallbackFunction callback)
+void Model::SearchPrefix(const std::string& prefix, CallbackFunction callback)
 {
 	prefixTree_.SearchByPrefix(prefix, callback);
 }
-
 
 
 void Model::StopSearch()
@@ -18,38 +15,28 @@ void Model::StopSearch()
 }
 
 
-
 namespace
 {
 	void ScanFileSystemHelper_(const std::filesystem::path& path, PrefixTree& prefixTree, int depth = 0)
 	{
 		using namespace std::filesystem;
+#ifdef _DEBUG
 		if(depth == 3) return;
+#endif
 		if(!exists(path))
 		{
 			return;
 		}
-		try
-		{
-			directory_iterator end_itr;
-			for(directory_iterator itr{ path }; itr != end_itr; ++itr)
-			{
-				if(is_directory(itr->status()))
-				{
-					ScanFileSystemHelper_(itr->path(), prefixTree, depth + 1);
-				}
 
-				/*
-					.native() returns
-						std::string if runs on Posix system,
-						std::wstring if runs on Windows
-				*/
-				prefixTree.AddString(itr->path().filename().native());
-			}
-		}
-		catch(const filesystem_error& e)
+		directory_iterator end_itr;
+		for(directory_iterator itr{ path }; itr != end_itr; ++itr)
 		{
-			
+			if(is_directory(itr->status()))
+			{
+				ScanFileSystemHelper_(itr->path(), prefixTree, depth + 1);
+			}
+
+			prefixTree.AddString(itr->path().filename().u8string());
 		}
 	}
 }
@@ -59,18 +46,19 @@ namespace
 void Model::ScanFileSystem()
 {
 #if defined(__CONFIG_WINDOWS__) //если под Windows, нужно просканировать каждый диск
-	String path = L"A:\\";
-	view_->ShowScanningWindow(L' ');
-	for(wchar_t c = L'A'; c <= L'Z'; c++)
+	using namespace std;
+	std::string p{ u8"A:\\" };
+	view_->ShowScanningWindow(u8" ");
+	for(char c = 'A'; c <= 'Z'; c++) //TODO: rewrite
 	{
-		path[0] = c;
-		if(std::filesystem::exists(path))
+		p[0] = c;
+		if(std::filesystem::exists(p))
 		{
-			view_->SetScanningDiskLetter(c);
-			ScanFileSystemHelper_(path, prefixTree_);
+			view_->SetScanningDiskLetter({ c });
+			ScanFileSystemHelper_(p, prefixTree_);
 		}
 	}
 #else //если на Posix, то запускаем из корня
-	ScanFileSystemHelper_("/", prefixTree);
+	ScanFileSystemHelper_(u8"/", prefixTree_);
 #endif
 }

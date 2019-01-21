@@ -1,10 +1,9 @@
 ﻿#pragma once
 
-
 #include "../forms/ui_main_window.h"
 #include "view_base.hpp"
 
-#include <QtWidgets/QMainWindow>
+#include <QMainWindow>
 #include <QListview>
 #include <QStringListModel>
 

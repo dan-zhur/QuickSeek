@@ -1,8 +1,8 @@
 ﻿#pragma once
 
-#include "config.hpp"
 #include "controller_base.hpp"
 
+#include <string>
 
 class ModelBase;
 class ControllerBase;
@@ -11,23 +11,18 @@ class ControllerBase;
 class ViewBase
 {
 public:
-	//types
-	using Char = config::Char;
-	using String = config::String;
-	//------------
-
 	//construction / deletion
 	virtual ~ViewBase() = default;
 	//------------
 
 	//pure virtual functions
 	virtual void ShowMainWindow() = 0;
-	virtual void AddPathToList(const String& path) = 0;
+	virtual void AddPathToList(const std::string& path) = 0;
 	virtual void ClearList() = 0;
-	virtual void ShowScanningWindow(const Char& diskLetter) = 0;
-	virtual void SetScanningDiskLetter(const Char& diskLetter) = 0;
+	virtual void ShowScanningWindow(const std::string& diskLetter) = 0;
+	virtual void SetScanningDiskLetter(const std::string& diskLetter) = 0;
 	virtual void CloseScanningWindow() = 0;
-	virtual void NotifySearchButtonClicked(const String& whatToSearch) = 0;
+	virtual void NotifySearchButtonClicked(const std::string& whatToSearch) = 0;
 	//-----------
 
 	//methods
