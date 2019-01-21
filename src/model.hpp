@@ -11,13 +11,13 @@ public:
 	//------------
 
 	//overriding methods
-	virtual void ScanFileSystem() override;
-	virtual void SearchPrefix(const std::string& prefix, CallbackFunction callback) override;
-	virtual void StopSearch() override;
+	void ScanFileSystem() override;
+	void SearchPrefix(const std::string& prefix, CallbackFunction callback) override;
+	void StopSearch() override;
 	//------------
 private:
 	//member variables
-	PrefixTree prefixTree_;
+	PrefixTree _prefix_tree;
 	//------------
 
 	//methods

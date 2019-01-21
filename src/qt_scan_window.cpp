@@ -1,7 +1,7 @@
 ﻿#include "qt_scan_window.hpp"
 
 
-ScanningWindow::ScanningWindow(QWidget *parent)
+ScanWindow::ScanWindow(QWidget *parent)
 	: QWidget(parent) {
 	ui.setupUi(this);
 
@@ -11,35 +11,35 @@ ScanningWindow::ScanningWindow(QWidget *parent)
 }
 
 
-ScanningWindow::~ScanningWindow() {
+ScanWindow::~ScanWindow() {
 }
 
 
-void ScanningWindow::Show() {
+void ScanWindow::Show() {
 	emit ShowSignal();
 }
 
 
-void ScanningWindow::ShowSlot() {
+void ScanWindow::ShowSlot() {
 	show();
 }
 
 
-void ScanningWindow::Close() {
+void ScanWindow::Close() {
 	emit CloseSignal();
 }
 
 
-void ScanningWindow::CloseSlot() {
+void ScanWindow::CloseSlot() {
 	close();
 }
 
 
-void ScanningWindow::SetDiskLetter(std::string diskLetter) {
-	emit SetDiskLetterSignal(diskLetter);
+void ScanWindow::SetDiskLetter(std::string disk_letter) {
+	emit SetDiskLetterSignal(disk_letter);
 }
 
 
-void ScanningWindow::SetDiskLetterSlot(std::string diskLetter) {
-	ui.scannedDiskLabel->setText(QString::fromUtf8(diskLetter.c_str()));
+void ScanWindow::SetDiskLetterSlot(std::string disk_letter) {
+	ui.scannedDiskLabel->setText(QString::fromUtf8(disk_letter.c_str()));
 }

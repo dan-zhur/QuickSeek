@@ -4,12 +4,12 @@
 
 #include <QWidget>
 
-class ScanningWindow : public QWidget {
+class ScanWindow : public QWidget {
 	Q_OBJECT
 
 public:
-	ScanningWindow(QWidget *parent = Q_NULLPTR);
-	~ScanningWindow();
+	ScanWindow(QWidget *parent = Q_NULLPTR);
+	~ScanWindow();
 
 	void SetDiskLetter(std::string diskLetter);
 	void Show();

@@ -3,11 +3,11 @@
 #include <QStringListModel>
 
 
-QuickSeekUI::QuickSeekUI(ViewBase* view, QWidget *parent)
-	: view_(view),
+MainWindow::MainWindow(ViewBase* view, QWidget *parent)
+	: _view(view),
 	  QMainWindow(parent) {
 	ui.setupUi(this);
-	ui.listView->setModel(&stringListModel_);
+	ui.listView->setModel(&_stringlistmodel);
 
 	QObject::connect(this, SIGNAL(Addstd::stringSignal(Qstd::string)), SLOT(Addstd::stringSlot(Qstd::string)), Qt::QueuedConnection);
 	QObject::connect(this, SIGNAL(ShowSignal()), SLOT(ShowSlot()), Qt::QueuedConnection);
@@ -17,49 +17,49 @@ QuickSeekUI::QuickSeekUI(ViewBase* view, QWidget *parent)
 }
 
 
-void QuickSeekUI::Show() {
+void MainWindow::Show() {
 	emit ShowSignal();
 }
 
 
-void QuickSeekUI::ShowSlot() {
+void MainWindow::ShowSlot() {
 	show();
 }
 
 
-void QuickSeekUI::Close() {
+void MainWindow::Close() {
 	emit CloseSignal();
 }
 
 
-void QuickSeekUI::CloseSlot() {
+void MainWindow::CloseSlot() {
 	close();
 }
 
 
-void QuickSeekUI::AddPathToList(QString prefix) {
+void MainWindow::AddPathToList(QString prefix) {
 	emit AddStringSignal(prefix); //to be called in UI-thread
 }
 
 
-void QuickSeekUI::ClearList() {
-	pathStringList_.clear();
+void MainWindow::ClearList() {
+	_path_stringlist.clear();
 }
 
 
-void QuickSeekUI::AddStringSlot(QString str) {
-	pathStringList_.append(str);
-	stringListModel_.setStringList(pathStringList_);
+void MainWindow::AddStringSlot(QString str) {
+	_path_stringlist.append(str);
+	_stringlistmodel.setStringList(_path_stringlist);
 }
 
 
-void QuickSeekUI::ListDoubleClicked(const QModelIndex& index) {
+void MainWindow::ListDoubleClicked(const QModelIndex& index) {
 	/*int x = index.row();
 	QProcess* process = new QProcess();
 	process->startDetached(QDir::rootPath() + "Windows/system32/explorer.exe " + "\"" + l[x] + "\"");*/
 }
 
 
-void QuickSeekUI::ButtonClicked() {	
-	view_->NotifySearchButtonClicked(ui.lineEdit->text().toStdString());
+void MainWindow::ButtonClicked() {	
+	_view->NotifySearchButtonClicked(ui.lineEdit->text().toStdString());
 }

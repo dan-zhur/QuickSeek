@@ -30,22 +30,22 @@ public:
 	//------------------------------
 private:
 	//types
-	struct Node_ {
-		bool isEndingNode_{ false }; //является ли последним для некоторого префикса
-		std::forward_list< std::pair<std::string, Node_*> > nextNodes_;
+	struct _Node {
+		bool _is_last_node{ false }; //является ли последним для некоторого префикса
+		std::forward_list< std::pair<std::string, _Node*> > _child_nodes;
 	};
 	//------------------------------
 
 	//methods
-	void DeleteMemory_(Node_* ptr);
+	void DeleteMemory_(_Node* ptr);
 
 	/*
 	Проходит по строке, заданному итераторами и одновременно такой же путь
 	делает в дереве. 
-	В случае успеха, возвращает указатель на Node_, содержащий последний
+	В случае успеха, возвращает указатель на _Node, содержащий последний
 	символ строки. В случае, если такой префикс не найден, возвращает nullptr.
 	*/
-	Node_* SkipToPrefixEnd(const std::string& prefix);
+	_Node* SkipToPrefixEnd(const std::string& prefix);
 
 	/*
 	Для для префикса, заканчивающемся в *ptr, вызывает callback(begin, end),
@@ -56,16 +56,16 @@ private:
 	void SearchByPrefixHelper_(std::string prefix, Function callback);
 
 	template<typename Function>
-	void GoSearch_(Node_* ptr, Function callback, std::string& str);
+	void GoSearch_(_Node* ptr, Function callback, std::string& str);
 
-	Node_* FindSymbolNodeAddress_(const std::string& symbol, const std::forward_list<std::pair<std::string, Node_*>>& nodes);
+	_Node* FindSymbolNodeAddress_(const std::string& symbol, const std::forward_list<std::pair<std::string, _Node*>>& nodes);
 	//------------------------------
 
 
 	//member variables
-	Node_ *root_{ nullptr };
-	std::atomic<bool> stopSearch_{ false }, isSearchRunning_{ false };
-	std::thread searchThread_;
+	_Node *_root{ nullptr };
+	std::atomic<bool> _stop_search{ false }, _is_search_running{ false };
+	std::thread _search_thread;
 	//------------------------------
 };
 

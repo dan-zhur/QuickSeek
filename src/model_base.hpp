@@ -26,11 +26,11 @@ public:
 	//------------
 
 	//methods
-	inline void SetView(ViewBase* view) { view_ = view; }
+	void SetView(ViewBase* view) { _view = view; }
 	//------------
 
 protected:
 	//member variables
-	ViewBase* view_{ nullptr };
+	ViewBase* _view{ nullptr };
 	//------------
 };

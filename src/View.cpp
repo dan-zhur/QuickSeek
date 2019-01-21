@@ -2,33 +2,33 @@
 
 
 void View::ShowMainWindow() {
-	mainWindow_.Show();
+	_main_window.Show();
 }
 
 
 void View::AddPathToList(const std::string& path) {
-	mainWindow_.AddPathToList(QString::fromUtf8(path.c_str()));
+	_main_window.AddPathToList(QString::fromUtf8(path.c_str()));
 }
 
 
 void View::ClearList() {
-	mainWindow_.ClearList();
+	_main_window.ClearList();
 }
 
 
-void View::ShowScanningWindow(const std::string& diskLetter) {
-	scanningWindow_.Show();
-	SetScanningDiskLetter(diskLetter);
+void View::ShowScanningWindow(const std::string& disk_letter) {
+	_scan_window.Show();
+	SetScanningDiskLetter(disk_letter);
 }
 
 
-void View::SetScanningDiskLetter(const std::string& diskLetter) {
-	scanningWindow_.SetDiskLetter(diskLetter);
+void View::SetScanningDiskLetter(const std::string& disk_letter) {
+	_scan_window.SetDiskLetter(disk_letter);
 }
 
 
 void View::CloseScanningWindow() {
-	scanningWindow_.Close();
+	_scan_window.Close();
 }
 
 

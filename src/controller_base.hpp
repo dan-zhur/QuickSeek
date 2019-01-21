@@ -23,13 +23,13 @@ public:
 	//------------
 
 	//methods
-	inline void SetModel(ModelBase* model) { model_ = model; }
-	inline void SetView(ViewBase* view) { view_ = view; }
+	void SetModel(ModelBase* model) { _model = model; }
+	void SetView(ViewBase* view) { _view = view; }
 	//------------
 
 protected:
 	//member variables
-	ModelBase* model_{ nullptr };
-	ViewBase* view_{ nullptr };
+	ModelBase* _model{ nullptr };
+	ViewBase* _view{ nullptr };
 	//------------
 };

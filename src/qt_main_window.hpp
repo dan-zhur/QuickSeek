@@ -8,12 +8,12 @@
 #include <QStringListModel>
 
 
-class QuickSeekUI : public QMainWindow {
+class MainWindow : public QMainWindow {
 	Q_OBJECT
 
 public:
 	//special members
-	QuickSeekUI(ViewBase* view, QWidget *parent = Q_NULLPTR);
+	MainWindow(ViewBase* view, QWidget *parent = Q_NULLPTR);
 	//------------
 
 	//methods
@@ -38,8 +38,8 @@ private slots:
 private:
 	//member variables
 	Ui::main_windowClass ui;
-	QStringListModel stringListModel_;
-	QStringList pathStringList_;
-	ViewBase* view_;
+	QStringListModel _stringlistmodel;
+	QStringList _path_stringlist;
+	ViewBase* _view;
 	//------------
 };

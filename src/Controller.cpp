@@ -2,32 +2,32 @@
 
 
 Controller::~Controller() {
-	model_->StopSearch();
-	if(runningThread_.joinable()) {
-		runningThread_.join();
+	_model->StopSearch();
+	if(_running_thread.joinable()) {
+		_running_thread.join();
 	}
 }
 
 
 void Controller::Run() {
-	runningThread_ = std::thread(&Controller::RunHelper_, this);
+	_running_thread = std::thread(&Controller::_RunHelper, this);
 }
 
 
-void Controller::RunHelper_() {
-	model_->ScanFileSystem();
-	view_->CloseScanningWindow();
-	view_->ShowMainWindow();
+void Controller::_RunHelper() {
+	_model->ScanFileSystem();
+	_view->CloseScanningWindow();
+	_view->ShowMainWindow();
 }
 
 
-void Controller::SearchButtonPressed(const std::string& whatToSearch) {
-	model_->StopSearch();
-	view_->ClearList();
-	model_->SearchPrefix(whatToSearch, std::bind(&ViewBase::AddPathToList, view_, std::placeholders::_1));
+void Controller::SearchButtonPressed(const std::string& what_to_search) {
+	_model->StopSearch();
+	_view->ClearList();
+	_model->SearchPrefix(what_to_search, std::bind(&ViewBase::AddPathToList, _view, std::placeholders::_1));
 }
 
 
 void Controller::StopSearchButtonPressed() {
-	model_->StopSearch();
+	_model->StopSearch();
 }

@@ -7,13 +7,13 @@
 
 PrefixTree::~PrefixTree() {
 	StopSearch();
-	DeleteMemory_(root_);
+	DeleteMemory_(_root);
 }
 
 
-void PrefixTree::DeleteMemory_(PrefixTree::Node_* ptr) {
+void PrefixTree::DeleteMemory_(PrefixTree::_Node* ptr) {
 	if(ptr != nullptr) {
-		for(const auto& it : ptr->nextNodes_) {
+		for(const auto& it : ptr->_child_nodes) {
 			DeleteMemory_(it.second);
 		}
 		delete ptr;
@@ -22,18 +22,18 @@ void PrefixTree::DeleteMemory_(PrefixTree::Node_* ptr) {
 
 
 void PrefixTree::StopSearch() {
-	if(searchThread_.joinable()) {
-		stopSearch_.store(true);
-		searchThread_.join();
-		stopSearch_.store(false);
+	if(_search_thread.joinable()) {
+		_stop_search.store(true);
+		_search_thread.join();
+		_stop_search.store(false);
 	}
 }
 
 
-PrefixTree::Node_* PrefixTree::SkipToPrefixEnd(const std::string& prefix) {
-	Node_* ptr = root_;
+PrefixTree::_Node* PrefixTree::SkipToPrefixEnd(const std::string& prefix) {
+	_Node* ptr = _root;
 	for(const auto& c : prefix)	{
-		Node_* cNode = FindSymbolNodeAddress_({ c }, ptr->nextNodes_);
+		_Node* cNode = FindSymbolNodeAddress_({ c }, ptr->_child_nodes);
 		if(cNode == nullptr) {
 			return nullptr;
 		}
@@ -45,7 +45,7 @@ PrefixTree::Node_* PrefixTree::SkipToPrefixEnd(const std::string& prefix) {
 }
 
 
-PrefixTree::Node_* PrefixTree::FindSymbolNodeAddress_(const std::string& symbol, const std::forward_list<std::pair<std::string, Node_*>>& nodes) {
+PrefixTree::_Node* PrefixTree::FindSymbolNodeAddress_(const std::string& symbol, const std::forward_list<std::pair<std::string, _Node*>>& nodes) {
 	for(const auto& it : nodes)	{
 		if(it.first == symbol) {
 			return it.second;
@@ -56,7 +56,7 @@ PrefixTree::Node_* PrefixTree::FindSymbolNodeAddress_(const std::string& symbol,
 
 
 void PrefixTree::WaitSearch() {
-	if(searchThread_.joinable()) {
-		searchThread_.join();
+	if(_search_thread.joinable()) {
+		_search_thread.join();
 	}
 }

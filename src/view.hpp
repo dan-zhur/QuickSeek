@@ -8,21 +8,21 @@
 class View : public ViewBase {
 public:
 	//special members
-	virtual ~View() override = default;
+	~View() override = default;
 	//------------------------------
 
 	//overriding functions
-	virtual void ShowMainWindow() override;
-	virtual void AddPathToList(const std::string& path) override;
-	virtual void ClearList() override;
-	virtual void ShowScanningWindow(const std::string& diskLetter) override;
-	virtual void SetScanningDiskLetter(const std::string& diskLetter) override;
-	virtual void CloseScanningWindow() override;
-	virtual void NotifySearchButtonClicked(const std::string& whatToSearch) override;
+	void ShowMainWindow() override;
+	void AddPathToList(const std::string& path) override;
+	void ClearList() override;
+	void ShowScanningWindow(const std::string& diskLetter) override;
+	void SetScanningDiskLetter(const std::string& diskLetter) override;
+	void CloseScanningWindow() override;
+	void NotifySearchButtonClicked(const std::string& whatToSearch) override;
 	//------------------------------
 private:
 	//member variables
-	QuickSeekUI mainWindow_{ this };
-	ScanningWindow scanningWindow_;
+	MainWindow _main_window{ this };
+	ScanWindow _scan_window;
 	//------------------------------
 };

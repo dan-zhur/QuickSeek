@@ -8,60 +8,60 @@ void PrefixTree::AddString(const Container& container) {
 
 template<typename Iterator>
 void PrefixTree::AddString(Iterator begin, Iterator end) {
-	if(root_ == nullptr) {
-		root_ = new Node_;
+	if(_root == nullptr) {
+		_root = new _Node;
 	}
-	Node_ *ptr = root_;
+	_Node *ptr = _root;
 	for(; begin != end; ++begin) {
 		std::string c{ *begin };
-		Node_* cNode = FindSymbolNodeAddress_(c, ptr->nextNodes_);
-		if(cNode == nullptr) { //если нет, то добавляем букву, чтобы был node
-			Node_ *temp = new Node_();
-			ptr->nextNodes_.push_front(std::make_pair(c, temp));
+		_Node* cnode = FindSymbolNodeAddress_(c, ptr->_child_nodes);
+		if(cnode == nullptr) { //если нет, то добавляем букву, чтобы был node
+			_Node *temp = new _Node();
+			ptr->_child_nodes.push_front(std::make_pair(c, temp));
 			ptr = temp;
 		}
 		else { //если префикс в дереве есть, то просто переходим по указателю на следующую букву
-			ptr = cNode;
+			ptr = cnode;
 		}
 	}
-	ptr->isEndingNode_ = true;
+	ptr->_is_last_node = true;
 }
 
 
 template<typename Function>
 void PrefixTree::SearchByPrefix(const std::string& prefix, Function callback) {
-	stopSearch_ = false;
-	isSearchRunning_ = true;
-	searchThread_ = std::thread(&PrefixTree::SearchByPrefixHelper_<Function>, this, prefix, callback);
+	_stop_search = false;
+	_is_search_running = true;
+	_search_thread = std::thread(&PrefixTree::SearchByPrefixHelper_<Function>, this, prefix, callback);
 }
 
 
 
 template<typename Function>
 void PrefixTree::SearchByPrefixHelper_(std::string prefix, Function callback) {
-	Node_* ptr = SkipToPrefixEnd(prefix);
+	_Node* ptr = SkipToPrefixEnd(prefix);
 	if(ptr) { //если есть такой префикс
 		GoSearch_(ptr, callback, prefix);
 		callback(std::string{}); //показывает, что поиск завершен
-		isSearchRunning_ = false;
+		_is_search_running = false;
 	}
 }
 
 
 //TODO: написать нерекурсивную версию
 template<typename Function>
-void PrefixTree::GoSearch_(Node_* ptr, Function callback, std::string& str) {
+void PrefixTree::GoSearch_(_Node* ptr, Function callback, std::string& str) {
 	//TODO: оптимизировать
-	if(stopSearch_.load()) {
+	if(_stop_search.load()) {
 		return;
 	}
 
 	//если в текущей вершине заканчивается некая строка
-	if(ptr->isEndingNode_) {
+	if(ptr->_is_last_node) {
 		callback(str);
 	}
 
-	for(const std::pair<std::string, Node_*>& it : ptr->nextNodes_) {
+	for(const std::pair<std::string, _Node*>& it : ptr->_child_nodes) {
 		std::string tmp = str;
 		str.append(it.first);
 		GoSearch_(it.second, callback, str);
