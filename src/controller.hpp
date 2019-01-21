@@ -7,26 +7,26 @@
 
 class Controller : public ControllerBase {
 public:
-	//special members
+	// special members
 	virtual ~Controller();
 	//------------------------------
 
-	//overriding methods
+	// overriding methods
 	void Run() override;
 	void SearchButtonPressed(const std::string& whatToSearch) override;
 	void StopSearchButtonPressed() override;
 	//------------------------------
 
-	//methods
+	// methods
 	void SetModel(ModelBase* model) { _model = model; }
 	void SetView(ViewBase* view) { _view = view; }
 	//------------------------------
 private:
-	//methods
+	// methods
 	void _RunHelper();
 	//------------------------------
 
-	//member variables
+	// member variables
 	ModelBase* _model;
 	ViewBase* _view;
 

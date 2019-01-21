@@ -6,20 +6,17 @@
 
 class Model : public ModelBase {
 public:
-	//special members
+	// special members
 	virtual ~Model() override = default;
-	//------------
+	//------------------------------
 
-	//overriding methods
+	// overriding methods
 	void ScanFileSystem() override;
 	void SearchPrefix(const std::string& prefix, CallbackFunction callback) override;
 	void StopSearch() override;
-	//------------
+	//------------------------------
 private:
-	//member variables
+	// member variables
 	PrefixTree _prefix_tree;
-	//------------
-
-	//methods
-	//------------
+	//------------------------------
 };

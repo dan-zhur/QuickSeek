@@ -12,16 +12,16 @@ class MainWindow : public QMainWindow {
 	Q_OBJECT
 
 public:
-	//special members
+	// special members
 	MainWindow(ViewBase* view, QWidget *parent = Q_NULLPTR);
-	//------------
+	//------------------------------
 
-	//methods
+	// methods
 	void AddPathToList(QString path);
 	void ClearList();
 	void Show();
 	void Close();
-	//------------
+	//------------------------------
 
 signals:
 	void AddStringSignal(QString str);
@@ -36,10 +36,10 @@ private slots:
 	void CloseSlot();
 
 private:
-	//member variables
+	// member variables
 	Ui::main_windowClass ui;
 	QStringListModel _stringlistmodel;
 	QStringList _path_stringlist;
 	ViewBase* _view;
-	//------------
+	//------------------------------
 };
