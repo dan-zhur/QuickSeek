@@ -12,7 +12,7 @@ public:
 
 	// overriding methods
 	void ScanFileSystem() override;
-	void SearchPrefix(const std::string& prefix, CallbackFunction callback) override;
+	void SearchPrefix(const std::string &prefix, CallbackFunction callback) override;
 	void StopSearch() override;
 	//------------------------------
 private:

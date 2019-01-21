@@ -21,7 +21,7 @@ void Controller::_RunHelper() {
 }
 
 
-void Controller::SearchButtonPressed(const std::string& what_to_search) {
+void Controller::SearchButtonPressed(const std::string &what_to_search) {
 	_model->StopSearch();
 	_view->ClearList();
 	_model->SearchPrefix(what_to_search, std::bind(&ViewBase::AddPathToList, _view, std::placeholders::_1));

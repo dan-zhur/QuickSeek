@@ -13,7 +13,7 @@ class MainWindow : public QMainWindow {
 
 public:
 	// special members
-	MainWindow(ViewBase* view, QWidget *parent = Q_NULLPTR);
+	MainWindow(ViewBase *view, QWidget *parent = Q_NULLPTR);
 	//------------------------------
 
 	// methods
@@ -31,7 +31,7 @@ signals:
 private slots:
 	void AddStringSlot(QString str);
 	void ButtonClicked();
-	void ListDoubleClicked(const QModelIndex& index);
+	void ListDoubleClicked(const QModelIndex &index);
 	void ShowSlot();
 	void CloseSlot();
 
@@ -40,6 +40,6 @@ private:
 	Ui::main_windowClass ui;
 	QStringListModel _stringlistmodel;
 	QStringList _path_stringlist;
-	ViewBase* _view;
+	ViewBase *_view;
 	//------------------------------
 };

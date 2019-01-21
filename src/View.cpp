@@ -6,7 +6,7 @@ void View::ShowMainWindow() {
 }
 
 
-void View::AddPathToList(const std::string& path) {
+void View::AddPathToList(const std::string &path) {
 	_main_window.AddPathToList(QString::fromUtf8(path.c_str()));
 }
 
@@ -16,13 +16,13 @@ void View::ClearList() {
 }
 
 
-void View::ShowScanWindow(const std::string& disk_letter) {
+void View::ShowScanWindow(const std::string &disk_letter) {
 	_scan_window.Show();
 	SetScanningDiskLetter(disk_letter);
 }
 
 
-void View::SetScanningDiskLetter(const std::string& disk_letter) {
+void View::SetScanningDiskLetter(const std::string &disk_letter) {
 	_scan_window.SetDiskLetter(disk_letter);
 }
 
@@ -32,6 +32,6 @@ void View::CloseScanWindow() {
 }
 
 
-void View::NotifySearchButtonClicked(const std::string& str) {
+void View::NotifySearchButtonClicked(const std::string &str) {
 	_controller->SearchButtonPressed(str);
 }

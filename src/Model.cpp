@@ -3,7 +3,7 @@
 #include <filesystem>
 
 
-void Model::SearchPrefix(const std::string& prefix, CallbackFunction callback) {
+void Model::SearchPrefix(const std::string &prefix, CallbackFunction callback) {
 	_prefix_tree.SearchByPrefix(prefix, callback);
 }
 
@@ -14,7 +14,7 @@ void Model::StopSearch() {
 
 
 namespace {
-	void ScanFileSystemHelper_(const std::filesystem::path& path, PrefixTree& prefix_tree, int depth = 0) {
+	void ScanFileSystemHelper_(const std::filesystem::path &path, PrefixTree &prefix_tree, int depth = 0) {
 		using namespace std::filesystem;
 #ifdef _DEBUG
 		// in debug, we will skip long indexing by limiting it up to 3 levels

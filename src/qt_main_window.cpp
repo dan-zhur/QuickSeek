@@ -3,7 +3,7 @@
 #include <QStringListModel>
 
 
-MainWindow::MainWindow(ViewBase* view, QWidget *parent)
+MainWindow::MainWindow(ViewBase *view, QWidget *parent)
 	: _view(view),
 	  QMainWindow(parent) {
 	ui.setupUi(this);
@@ -53,9 +53,9 @@ void MainWindow::AddStringSlot(QString str) {
 }
 
 
-void MainWindow::ListDoubleClicked(const QModelIndex& index) {
+void MainWindow::ListDoubleClicked(const QModelIndex &index) {
 	/*int x = index.row();
-	QProcess* process = new QProcess();
+	QProcess *process = new QProcess();
 	process->startDetached(QDir::rootPath() + "Windows/system32/explorer.exe " + "\"" + l[x] + "\"");*/
 }
 

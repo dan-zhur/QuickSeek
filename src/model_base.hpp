@@ -22,16 +22,16 @@ public:
 
 	// pure virtual functions
 	virtual void ScanFileSystem() = 0;
-	virtual void SearchPrefix(const std::string& prefix, CallbackFunction callback) = 0;
+	virtual void SearchPrefix(const std::string &prefix, CallbackFunction callback) = 0;
 	virtual void StopSearch() = 0;
 	//------------------------------
 
 	// methods
-	void SetView(ViewBase* view) { _view = view; }
+	void SetView(ViewBase *view) { _view = view; }
 	//------------------------------
 
 protected:
 	// member variables
-	ViewBase* _view{ nullptr };
+	ViewBase *_view{ nullptr };
 	//------------------------------
 };

@@ -11,9 +11,9 @@ PrefixTree::~PrefixTree() {
 }
 
 
-void PrefixTree::DeleteMemory_(PrefixTree::_Node* ptr) {
+void PrefixTree::DeleteMemory_(PrefixTree::_Node *ptr) {
 	if(ptr != nullptr) {
-		for(const auto& it : ptr->_child_nodes) {
+		for(const auto &it : ptr->_child_nodes) {
 			DeleteMemory_(it.second);
 		}
 		delete ptr;
@@ -30,9 +30,9 @@ void PrefixTree::StopSearch() {
 }
 
 
-PrefixTree::_Node* PrefixTree::SkipToPrefixEnd(const std::string& prefix) {
-	_Node* ptr = _root;
-	for(const auto& c : prefix)	{
+PrefixTree::_Node* PrefixTree::SkipToPrefixEnd(const std::string &prefix) {
+	_Node *ptr = _root;
+	for(const auto &c : prefix)	{
 		_Node* cNode = FindSymbolNodeAddress_({ c }, ptr->_child_nodes);
 		if(cNode == nullptr) {
 			return nullptr;
@@ -45,8 +45,8 @@ PrefixTree::_Node* PrefixTree::SkipToPrefixEnd(const std::string& prefix) {
 }
 
 
-PrefixTree::_Node* PrefixTree::FindSymbolNodeAddress_(const std::string& symbol, const std::forward_list<std::pair<std::string, _Node*>>& nodes) {
-	for(const auto& it : nodes)	{
+PrefixTree::_Node* PrefixTree::FindSymbolNodeAddress_(const std::string &symbol, const std::forward_list<std::pair<std::string, _Node*>> &nodes) {
+	for(const auto &it : nodes)	{
 		if(it.first == symbol) {
 			return it.second;
 		}

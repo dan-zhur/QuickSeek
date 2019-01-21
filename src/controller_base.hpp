@@ -18,18 +18,18 @@ public:
 
 	// pure virtual functions
 	virtual void Run() = 0;
-	virtual void SearchButtonPressed(const std::string& what_to_search) = 0;
+	virtual void SearchButtonPressed(const std::string &what_to_search) = 0;
 	virtual void StopSearchButtonPressed() = 0;
 	//------------------------------
 
 	// methods
-	void SetModel(ModelBase* model) { _model = model; }
-	void SetView(ViewBase* view) { _view = view; }
+	void SetModel(ModelBase *model) { _model = model; }
+	void SetView(ViewBase *view) { _view = view; }
 	//------------------------------
 
 protected:
 	// member variables
-	ModelBase* _model{ nullptr };
-	ViewBase* _view{ nullptr };
+	ModelBase *_model{ nullptr };
+	ViewBase *_view{ nullptr };
 	//------------------------------
 };

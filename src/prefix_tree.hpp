@@ -15,13 +15,13 @@ public:
 
 	// methods
 	template<typename Container>
-	void AddString(const Container& container);
+	void AddString(const Container &container);
 
 	template<typename Iterator>
 	void AddString(Iterator begin, Iterator end);
 
 	template<typename Function>
-	void SearchByPrefix(const std::string& prefix, Function callback);
+	void SearchByPrefix(const std::string &prefix, Function callback);
 
 	void StopSearch();
 
@@ -36,14 +36,14 @@ private:
 	//------------------------------
 
 	// methods
-	void DeleteMemory_(_Node* ptr);
+	void DeleteMemory_(_Node *ptr);
 
 	/*
 	Goes through tree by a way, defined by string.
 	If succeeded, returns _Node*, pointing to last string symbol.
 	If failed, returns nullptr.
 	*/
-	_Node* SkipToPrefixEnd(const std::string& prefix);
+	_Node* SkipToPrefixEnd(const std::string &prefix);
 
 	/*
 	For prefix, runs callback for all child nodes that are ends for
@@ -53,9 +53,9 @@ private:
 	void SearchByPrefixHelper_(std::string prefix, Function callback);
 
 	template<typename Function>
-	void GoSearch_(_Node* ptr, Function callback, std::string& str);
+	void GoSearch_(_Node *ptr, Function callback, std::string &str);
 
-	_Node* FindSymbolNodeAddress_(const std::string& symbol, const std::forward_list<std::pair<std::string, _Node*>>& nodes);
+	_Node* FindSymbolNodeAddress_(const std::string &symbol, const std::forward_list<std::pair<std::string, _Node*>> &nodes);
 	//------------------------------
 
 
