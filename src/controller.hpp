@@ -5,8 +5,7 @@
 #include <thread>
 
 
-class Controller : public ControllerBase
-{
+class Controller : public ControllerBase {
 public:
 	//constuction / destruction
 	virtual ~Controller();

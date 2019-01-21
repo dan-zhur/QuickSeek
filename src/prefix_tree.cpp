@@ -5,21 +5,15 @@
 #include <algorithm>
 
 
-
-PrefixTree::~PrefixTree()
-{
+PrefixTree::~PrefixTree() {
 	StopSearch();
 	DeleteMemory_(root_);
 }
 
 
-
-void PrefixTree::DeleteMemory_(PrefixTree::Node_* ptr)
-{
-	if(ptr != nullptr)
-	{
-		for(const auto& it : ptr->nextNodes_)
-		{
+void PrefixTree::DeleteMemory_(PrefixTree::Node_* ptr) {
+	if(ptr != nullptr) {
+		for(const auto& it : ptr->nextNodes_) {
 			DeleteMemory_(it.second);
 		}
 		delete ptr;
@@ -27,11 +21,8 @@ void PrefixTree::DeleteMemory_(PrefixTree::Node_* ptr)
 }
 
 
-
-void PrefixTree::StopSearch()
-{
-	if(searchThread_.joinable())
-	{
+void PrefixTree::StopSearch() {
+	if(searchThread_.joinable()) {
 		stopSearch_.store(true);
 		searchThread_.join();
 		stopSearch_.store(false);
@@ -39,18 +30,14 @@ void PrefixTree::StopSearch()
 }
 
 
-PrefixTree::Node_* PrefixTree::SkipToPrefixEnd(const std::string& prefix)
-{
+PrefixTree::Node_* PrefixTree::SkipToPrefixEnd(const std::string& prefix) {
 	Node_* ptr = root_;
-	for(const auto& c : prefix)
-	{
+	for(const auto& c : prefix)	{
 		Node_* cNode = FindSymbolNodeAddress_({ c }, ptr->nextNodes_);
-		if(cNode == nullptr)
-		{
+		if(cNode == nullptr) {
 			return nullptr;
 		}
-		else
-		{
+		else {
 			ptr = cNode;
 		}
 	}
@@ -58,13 +45,9 @@ PrefixTree::Node_* PrefixTree::SkipToPrefixEnd(const std::string& prefix)
 }
 
 
-
-PrefixTree::Node_* PrefixTree::FindSymbolNodeAddress_(const std::string& symbol, const std::forward_list<std::pair<std::string, Node_*>>& nodes)
-{
-	for(const auto& it : nodes)
-	{
-		if(it.first == symbol)
-		{
+PrefixTree::Node_* PrefixTree::FindSymbolNodeAddress_(const std::string& symbol, const std::forward_list<std::pair<std::string, Node_*>>& nodes) {
+	for(const auto& it : nodes)	{
+		if(it.first == symbol) {
 			return it.second;
 		}
 	}
@@ -72,11 +55,8 @@ PrefixTree::Node_* PrefixTree::FindSymbolNodeAddress_(const std::string& symbol,
 }
 
 
-
-void PrefixTree::WaitSearch()
-{
-	if(searchThread_.joinable())
-	{
+void PrefixTree::WaitSearch() {
+	if(searchThread_.joinable()) {
 		searchThread_.join();
 	}
 }

@@ -4,8 +4,7 @@
 
 #include <QWidget>
 
-class ScanningWindow : public QWidget
-{
+class ScanningWindow : public QWidget {
 	Q_OBJECT
 
 public:

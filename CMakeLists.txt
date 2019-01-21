@@ -31,7 +31,6 @@ set(quick_seek_SRC
 )
 
 set(quick_seek_HEADERS
-  src/config.hpp
   src/controller.hpp
   src/controller_base.hpp
   src/model.hpp

@@ -6,10 +6,10 @@
 #include <list>
 #include <thread>
 
-class PrefixTree
-{
+
+class PrefixTree {
 public:
-	//construction / deletion
+	//special members
 	PrefixTree() = default;
 	~PrefixTree();
 	//------------------------------

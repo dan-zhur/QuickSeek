@@ -4,10 +4,9 @@
 #include "prefix_tree.hpp"
 
 
-class Model : public ModelBase
-{
+class Model : public ModelBase {
 public:
-	//construction / deletion
+	//special members
 	virtual ~Model() override = default;
 	//------------
 

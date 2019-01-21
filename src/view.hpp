@@ -5,10 +5,9 @@
 #include "qt_scan_window.hpp"
 
 
-class View : public ViewBase
-{
+class View : public ViewBase {
 public:
-	//construction / deletion
+	//special members
 	virtual ~View() override = default;
 	//------------------------------
 

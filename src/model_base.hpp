@@ -9,14 +9,13 @@
 class ControllerBase;
 class ViewBase;
 
-class ModelBase
-{
+class ModelBase {
 public:
 	//types
 	using CallbackFunction = std::function<void(std::string)>;
 	//------------
 
-	//construction / deletion
+	//special members
 	virtual ~ModelBase() = default;
 	//------------
 

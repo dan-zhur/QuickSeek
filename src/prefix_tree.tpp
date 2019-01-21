@@ -1,12 +1,13 @@
-﻿template<typename Container>
+﻿#pragma once
+
+template<typename Container>
 void PrefixTree::AddString(const Container& container) {
 	AddString(std::begin(container), std::end(container));
 }
 
 
 template<typename Iterator>
-void PrefixTree::AddString(Iterator begin, Iterator end)
-{
+void PrefixTree::AddString(Iterator begin, Iterator end) {
 	if(root_ == nullptr) {
 		root_ = new Node_;
 	}
@@ -28,8 +29,7 @@ void PrefixTree::AddString(Iterator begin, Iterator end)
 
 
 template<typename Function>
-void PrefixTree::SearchByPrefix(const std::string& prefix, Function callback)
-{
+void PrefixTree::SearchByPrefix(const std::string& prefix, Function callback) {
 	stopSearch_ = false;
 	isSearchRunning_ = true;
 	searchThread_ = std::thread(&PrefixTree::SearchByPrefixHelper_<Function>, this, prefix, callback);

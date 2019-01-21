@@ -10,10 +10,9 @@ class ModelBase;
 class ViewBase;
 
 
-class ControllerBase
-{
+class ControllerBase {
 public:
-	//construction / deletion
+	//special members
 	virtual ~ControllerBase() = default;
 	//------------
 

@@ -8,12 +8,11 @@
 #include <QStringListModel>
 
 
-class QuickSeekUI : public QMainWindow
-{
+class QuickSeekUI : public QMainWindow {
 	Q_OBJECT
 
 public:
-	//construction / deletion
+	//special members
 	QuickSeekUI(ViewBase* view, QWidget *parent = Q_NULLPTR);
 	//------------
 
