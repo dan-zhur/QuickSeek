@@ -9,15 +9,12 @@ void Model::SearchPrefix(const std::string &prefix, CallbackFunction callback) {
 
 
 namespace {
-	void ScanFileSystemHelper_(const std::filesystem::path &path, PrefixTree &prefix_tree, int depth = 0) {
+	void ScanFileSystemHelper_(const std::filesystem::path &path, PrefixTree &prefix_tree) {
 		using namespace std::filesystem;
-
-		if(!exists(path))	return;
-
 		directory_iterator end_itr;
 		for(directory_iterator itr{ path }; itr != end_itr; ++itr) {
 			if(is_directory(itr->status()))	{
-				ScanFileSystemHelper_(itr->path(), prefix_tree, depth + 1);
+				ScanFileSystemHelper_(itr->path(), prefix_tree);
 			}
 
 			prefix_tree.AddString(itr->path().filename().u8string());
