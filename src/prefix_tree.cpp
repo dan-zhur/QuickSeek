@@ -33,12 +33,12 @@ void PrefixTree::StopSearch() {
 PrefixTree::_Node* PrefixTree::SkipToPrefixEnd(const std::string &prefix) {
 	_Node *ptr = _root;
 	for(const auto &c : prefix)	{
-		_Node* cNode = FindSymbolNodeAddress_({ c }, ptr->_child_nodes);
-		if(cNode == nullptr) {
+		_Node* cnode = FindSymbolNodeAddress_({ c }, ptr->_child_nodes);
+		if(cnode == nullptr) {
 			return nullptr;
 		}
 		else {
-			ptr = cNode;
+			ptr = cnode;
 		}
 	}
 	return ptr;

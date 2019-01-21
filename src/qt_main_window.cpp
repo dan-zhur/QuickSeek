@@ -38,7 +38,7 @@ void MainWindow::CloseSlot() {
 
 
 void MainWindow::AddPathToList(QString prefix) {
-	emit AddStringSignal(prefix); //to be called in UI-thread
+	emit AddStringSignal(prefix); // to be called in UI-thread
 }
 
 

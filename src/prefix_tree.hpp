@@ -39,7 +39,7 @@ private:
 	void DeleteMemory_(_Node *ptr);
 
 	/*
-	Goes through tree by a way, defined by string.
+	Goes through a tree by a way, defined by string.
 	If succeeded, returns _Node*, pointing to last string symbol.
 	If failed, returns nullptr.
 	*/

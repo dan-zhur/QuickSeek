@@ -40,7 +40,7 @@ void Model::ScanFileSystem() {
 	using namespace std;
 	std::string p{ u8"A:\\" };
 	_view->ShowScanWindow(u8" ");
-	for(char c = 'A'; c <= 'Z'; c++) { //TODO: rewrite using WinAPI, not letter disk scan
+	for(char c = 'A'; c <= 'Z'; c++) { // TODO: rewrite using WinAPI, not letter disk scan
 		p[0] = c;
 		if(std::filesystem::exists(p)) {
 			_view->SetScanningDiskLetter({ c });
