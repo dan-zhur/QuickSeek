@@ -46,6 +46,7 @@ PrefixTree::_Node* PrefixTree::SkipToPrefixEnd(const std::string &prefix) {
 
 
 PrefixTree::_Node* PrefixTree::_FindSymbolNodeAddress(const std::string &symbol, const std::forward_list<std::pair<std::string, _Node*>> &nodes) {
+	// TODO: refactor: simple find
 	for(const auto &it : nodes)	{
 		if(it.first == symbol) {
 			return it.second;

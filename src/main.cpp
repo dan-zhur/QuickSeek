@@ -1,6 +1,6 @@
 ﻿#include "model.hpp"
 #include "controller.hpp"
-#include "view.hpp"
+#include "qt_view.hpp"
 
 #include <QApplication>
 
@@ -9,7 +9,7 @@ int main(int argc, char *argv[]) {
 	QApplication a(argc, argv);
 
 	Model model;
-	View view;
+	QtView view;
 	Controller controller;
 	
 	model.SetView(&view);

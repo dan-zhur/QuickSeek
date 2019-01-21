@@ -25,7 +25,7 @@ set(quick_seek_SRC
   src/prefix_tree.cpp
   src/qt_main_window.cpp
   src/qt_scan_window.cpp
-  src/view.cpp
+  src/qt_view.cpp
   forms/main_window.ui
   forms/scan_window.ui
 )
@@ -41,7 +41,7 @@ set(quick_seek_HEADERS
   src/prefix_tree.hpp
   src/qt_main_window.hpp
   src/qt_scan_window.hpp
-  src/view.hpp
+  src/qt_view.hpp
   src/view_base.hpp
 
   src/prefix_tree.tpp

@@ -5,10 +5,10 @@
 #include "qt_scan_window.hpp"
 
 
-class View : public ViewBase {
+class QtView : public ViewBase {
 public:
 	// special members
-	~View() override = default;
+	~QtView() override = default;
 	//------------------------------
 
 	// overriding functions
