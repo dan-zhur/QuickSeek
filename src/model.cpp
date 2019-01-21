@@ -8,18 +8,9 @@ void Model::SearchPrefix(const std::string &prefix, CallbackFunction callback) {
 }
 
 
-void Model::StopSearch() {
-	_prefix_tree.StopSearch();
-}
-
-
 namespace {
 	void ScanFileSystemHelper_(const std::filesystem::path &path, PrefixTree &prefix_tree, int depth = 0) {
 		using namespace std::filesystem;
-#ifdef _DEBUG
-		// in debug, we will skip long indexing by limiting it up to 3 levels
-		if(depth == 3) return;
-#endif
 
 		if(!exists(path))	return;
 
@@ -40,7 +31,7 @@ void Model::ScanFileSystem() {
 	using namespace std;
 	std::string p{ u8"A:\\" };
 	_view->ShowScanWindow(u8" ");
-	for(char c = 'A'; c <= 'Z'; c++) { // TODO: rewrite using WinAPI, not letter disk scan
+	for(char c = u8'A'; c <= u8'Z'; c++) { // TODO: rewrite using WinAPI, not letter disk scan
 		p[0] = c;
 		if(std::filesystem::exists(p)) {
 			_view->SetScanningDiskLetter({ c });
@@ -50,4 +41,9 @@ void Model::ScanFileSystem() {
 #elif defined(__CONFIG__POSIX__) // if Posix, run from root
 	ScanFileSystemHelper_(u8"/", prefixTree_);
 #endif
+}
+
+
+void Model::StopSearch() {
+
 }
