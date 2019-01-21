@@ -36,7 +36,7 @@ private:
 	//------------------------------
 
 	// methods
-	void DeleteMemory_(_Node *ptr);
+	void _DeleteMemory(_Node *ptr);
 
 	/*
 	Goes through a tree by a way, defined by string.
@@ -50,12 +50,12 @@ private:
 	some strings.
 	*/
 	template<typename Function>
-	void SearchByPrefixHelper_(std::string prefix, Function callback);
+	void _SearchByPrefixHelper(std::string prefix, Function callback);
 
 	template<typename Function>
-	void GoSearch_(_Node *ptr, Function callback, std::string &str);
+	void _GoSearch(_Node *ptr, Function callback, std::string &str);
 
-	_Node* FindSymbolNodeAddress_(const std::string &symbol, const std::forward_list<std::pair<std::string, _Node*>> &nodes);
+	_Node* _FindSymbolNodeAddress(const std::string &symbol, const std::forward_list<std::pair<std::string, _Node*>> &nodes);
 	//------------------------------
 
 

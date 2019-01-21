@@ -15,7 +15,7 @@ void PrefixTree::AddString(Iterator begin, Iterator end) {
 	_Node *ptr = _root;
 	for(; begin != end; ++begin) {
 		std::string c{ *begin };
-		_Node *cnode = FindSymbolNodeAddress_(c, ptr->_child_nodes);
+		_Node *cnode = _FindSymbolNodeAddress(c, ptr->_child_nodes);
 		if(cnode == nullptr) { // if we haven't got child for such prefix, create it
 			_Node *temp = new _Node();
 			ptr->_child_nodes.push_front(std::make_pair(c, temp));
@@ -33,15 +33,15 @@ template<typename Function>
 void PrefixTree::SearchByPrefix(const std::string &prefix, Function callback) {
 	_stop_search = false;
 	_is_search_running = true;
-	_search_thread = std::thread(&PrefixTree::SearchByPrefixHelper_<Function>, this, prefix, callback);
+	_search_thread = std::thread(&PrefixTree::_SearchByPrefixHelper<Function>, this, prefix, callback);
 }
 
 
 template<typename Function>
-void PrefixTree::SearchByPrefixHelper_(std::string prefix, Function callback) {
+void PrefixTree::_SearchByPrefixHelper(std::string prefix, Function callback) {
 	_Node *ptr = SkipToPrefixEnd(prefix);
 	if(ptr) { // if we got such prefix
-		GoSearch_(ptr, callback, prefix);
+		_GoSearch(ptr, callback, prefix);
 		callback(std::string{}); // shows that search is finished
 		_is_search_running = false;
 	}
@@ -50,7 +50,7 @@ void PrefixTree::SearchByPrefixHelper_(std::string prefix, Function callback) {
 
 // TODO: write non-recursive version
 template<typename Function>
-void PrefixTree::GoSearch_(_Node *ptr, Function callback, std::string &str) {
+void PrefixTree::_GoSearch(_Node *ptr, Function callback, std::string &str) {
 	// TODO: optimize
 	if(_stop_search.load()) {
 		return;
@@ -64,7 +64,7 @@ void PrefixTree::GoSearch_(_Node *ptr, Function callback, std::string &str) {
 	for(const std::pair<std::string, _Node*> &it : ptr->_child_nodes) {
 		std::string tmp = str;
 		str.append(it.first);
-		GoSearch_(it.second, callback, str);
+		_GoSearch(it.second, callback, str);
 		str = tmp;
 	}
 }
