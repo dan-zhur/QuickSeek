@@ -16,7 +16,7 @@ void View::ClearList() {
 }
 
 
-void View::ShowScanningWindow(const std::string& disk_letter) {
+void View::ShowScanWindow(const std::string& disk_letter) {
 	_scan_window.Show();
 	SetScanningDiskLetter(disk_letter);
 }
@@ -27,11 +27,11 @@ void View::SetScanningDiskLetter(const std::string& disk_letter) {
 }
 
 
-void View::CloseScanningWindow() {
+void View::CloseScanWindow() {
 	_scan_window.Close();
 }
 
 
 void View::NotifySearchButtonClicked(const std::string& str) {
-	controller_->SearchButtonPressed(str);
+	_controller->SearchButtonPressed(str);
 }

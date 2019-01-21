@@ -15,9 +15,9 @@ public:
 	void ShowMainWindow() override;
 	void AddPathToList(const std::string& path) override;
 	void ClearList() override;
-	void ShowScanningWindow(const std::string& disk_letter) override;
+	void ShowScanWindow(const std::string& disk_letter) override;
 	void SetScanningDiskLetter(const std::string& disk_letter) override;
-	void CloseScanningWindow() override;
+	void CloseScanWindow() override;
 	void NotifySearchButtonClicked(const std::string& what_to_search) override;
 	//------------------------------
 private:

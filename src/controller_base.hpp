@@ -18,7 +18,7 @@ public:
 
 	// pure virtual functions
 	virtual void Run() = 0;
-	virtual void SearchButtonPressed(const std::string& whatToSearch) = 0;
+	virtual void SearchButtonPressed(const std::string& what_to_search) = 0;
 	virtual void StopSearchButtonPressed() = 0;
 	//------------------------------
 

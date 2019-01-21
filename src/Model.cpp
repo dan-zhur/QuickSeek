@@ -39,7 +39,7 @@ void Model::ScanFileSystem() {
 #if defined(__CONFIG_WINDOWS__) // if ran under Windows, we will check every disk
 	using namespace std;
 	std::string p{ u8"A:\\" };
-	_view->ShowScanningWindow(u8" ");
+	_view->ShowScanWindow(u8" ");
 	for(char c = 'A'; c <= 'Z'; c++) { //TODO: rewrite using WinAPI, not letter disk scan
 		p[0] = c;
 		if(std::filesystem::exists(p)) {

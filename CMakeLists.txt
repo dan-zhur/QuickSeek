@@ -42,7 +42,7 @@ set(quick_seek_HEADERS
   src/qt_main_window.hpp
   src/qt_scan_window.hpp
   src/view.hpp
-  src/view.hpp
+  src/view_base.hpp
 
   src/prefix_tree.tpp
 )

@@ -15,18 +15,18 @@ public:
 	//------------------------------
 
 	// methods
-	void SetDiskLetter(std::string diskLetter);
+	void SetDiskLetter(std::string disk_letter);
 	void Show();
 	void Close();
 	//------------------------------
 
 signals:
-	void SetDiskLetterSignal(std::string diskLetter);
+	void SetDiskLetterSignal(std::string disk_letter);
 	void ShowSignal();
 	void CloseSignal();
 
 private slots:
-	void SetDiskLetterSlot(std::string diskLetter);
+	void SetDiskLetterSlot(std::string disk_letter);
 	void ShowSlot();
 	void CloseSlot();
 

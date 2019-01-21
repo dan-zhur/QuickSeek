@@ -13,7 +13,7 @@ public:
 
 	// overriding methods
 	void Run() override;
-	void SearchButtonPressed(const std::string& whatToSearch) override;
+	void SearchButtonPressed(const std::string& what_to_search) override;
 	void StopSearchButtonPressed() override;
 	//------------------------------
 

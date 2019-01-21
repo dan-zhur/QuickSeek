@@ -16,7 +16,7 @@ void Controller::Run() {
 
 void Controller::_RunHelper() {
 	_model->ScanFileSystem();
-	_view->CloseScanningWindow();
+	_view->CloseScanWindow();
 	_view->ShowMainWindow();
 }
 
