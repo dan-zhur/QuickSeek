@@ -11,10 +11,10 @@ namespace {
 	// types
 
 	/*
-		StringProxy allows to perform some action on string
+		AssignmentProxy allows to perform some action on object
 		right after assignment to it. 
 		Constructor accepts Function f, which will be called
-		as f(str), where str is std::string.
+		as f(value), where value is assigned value.
 	*/
 	template<typename Function>
 	struct StringProxy {
@@ -22,18 +22,12 @@ namespace {
 			: handler{ function } {
 		}
 
-		StringProxy& operator=(const std::string &new_value) {
-			value = new_value;
-			handler(value);
+		template<typename T>
+		StringProxy& operator=(T &&new_value) {
+			handler(std::forward<T>(new_value));
 			return *this;
 		}
 
-		StringProxy& operator=(std::string &&new_value) {
-			value = std::move(new_value);
-			return *this;
-		}
-
-		std::string value;
 		Function handler;
 	};
 

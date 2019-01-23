@@ -11,6 +11,16 @@ Controller::~Controller() {
 }
 
 
+void Controller::SetFileManager(FileManager * const file_manager) { 
+	_file_manager = file_manager; 
+}
+
+
+void Controller::SetView(ViewBase * const view) {
+	_view = view;
+}
+
+
 void Controller::Run() {
 	_running_thread = std::thread(&Controller::_RunHelper, this);
 }

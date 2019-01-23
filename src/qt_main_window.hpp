@@ -14,6 +14,11 @@ class MainWindow : public QMainWindow {
 public:
 	// special members
 	MainWindow(ViewBase *view, QWidget *parent = Q_NULLPTR);
+	MainWindow(const MainWindow&) = delete;
+	MainWindow(MainWindow&&) = default;
+	MainWindow& operator=(const MainWindow&) = delete;
+	MainWindow& operator=(MainWindow&&) = default;
+	~MainWindow() override = default;
 	//------------------------------
 
 	// methods

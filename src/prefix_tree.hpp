@@ -6,10 +6,14 @@
 #include <thread>
 
 
-class PrefixTree {
+class PrefixTree final {
 public:
 	// special members
 	PrefixTree() = default;
+	PrefixTree(const PrefixTree&) = delete;
+	PrefixTree(PrefixTree&&) = default;
+	PrefixTree& operator=(const PrefixTree&) = delete;
+	PrefixTree& operator=(PrefixTree&&) = default;
 	~PrefixTree();
 	//------------------------------
 

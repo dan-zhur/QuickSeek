@@ -11,10 +11,6 @@ ScanWindow::ScanWindow(QWidget *parent)
 }
 
 
-ScanWindow::~ScanWindow() {
-}
-
-
 void ScanWindow::Show() {
 	emit ShowSignal();
 }
@@ -38,7 +34,6 @@ void ScanWindow::CloseSlot() {
 void ScanWindow::SetDiskLetter(std::string disk_letter) {
 	emit SetDiskLetterSignal(disk_letter);
 }
-
 
 void ScanWindow::SetDiskLetterSlot(std::string disk_letter) {
 	ui.scannedDiskLabel->setText(QString::fromUtf8(disk_letter.c_str()));

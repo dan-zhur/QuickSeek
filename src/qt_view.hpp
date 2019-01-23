@@ -8,6 +8,11 @@
 class QtView : public ViewBase {
 public:
 	// special members
+	QtView() = default;
+	QtView(const QtView&) = delete;
+	QtView(QtView&&) = default;
+	QtView& operator=(const QtView&) = delete;
+	QtView& operator=(QtView&&) = default;
 	~QtView() override = default;
 	//------------------------------
 

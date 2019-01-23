@@ -9,6 +9,11 @@ class ViewBase
 {
 public:
 	// special members
+	ViewBase() = default;
+	ViewBase(const ViewBase&) = default;
+	ViewBase(ViewBase&&) = default;
+	ViewBase& operator=(const ViewBase&) = default;
+	ViewBase& operator=(ViewBase&&) = default;
 	virtual ~ViewBase() = default;
 	//------------------------------
 

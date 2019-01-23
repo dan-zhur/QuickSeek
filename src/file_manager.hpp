@@ -12,6 +12,14 @@ class ViewBase;
 
 class FileManager final {
 public:
+	// special members
+	FileManager() = default;
+	FileManager(const FileManager&) = delete;
+	FileManager(FileManager&&) = default;
+	FileManager& operator=(const FileManager&) = delete;
+	FileManager& operator=(FileManager&&) = default;
+	~FileManager() = default;
+
 	// pure virtual functions
 	void ScanFileSystem();
 	void SearchPrefix(const std::string &prefix);

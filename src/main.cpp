@@ -6,11 +6,11 @@
 
 
 int main(int argc, char *argv[]) {
-	QApplication a(argc, argv);
+	QApplication app(argc, argv);
 
-	QtView view;
 	FileManager manager;
 	Controller controller;
+	QtView view;
 	
 	manager.SetView(&view);
 
@@ -21,5 +21,5 @@ int main(int argc, char *argv[]) {
 
 	controller.Run();
 
-	return a.exec();
+	return app.exec();
 }

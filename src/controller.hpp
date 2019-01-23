@@ -9,6 +9,11 @@ class FileManager;
 class Controller {
 public:
 	// special members
+	Controller() = default;
+	Controller(const Controller&) = delete;
+	Controller(Controller&&) = default;
+	Controller& operator=(const Controller&) = delete;
+	Controller& operator=(Controller&&) = default;
 	virtual ~Controller();
 	//------------------------------
 
@@ -19,8 +24,8 @@ public:
 	//------------------------------
 
 	// methods
-	void SetFileManager(FileManager * const file_manager) { _file_manager = file_manager; }
-	void SetView(ViewBase * const view) { _view = view; }
+	void SetFileManager(FileManager * const file_manager);
+	void SetView(ViewBase * const view);
 	//------------------------------
 private:
 	// methods

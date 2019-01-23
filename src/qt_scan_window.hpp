@@ -11,7 +11,11 @@ class ScanWindow : public QWidget {
 public:
 	// special members
 	ScanWindow(QWidget *parent = Q_NULLPTR);
-	~ScanWindow();
+	ScanWindow(const ScanWindow&) = delete;
+	ScanWindow(ScanWindow&&) = default;
+	ScanWindow& operator=(const ScanWindow&) = delete;
+	ScanWindow& operator=(ScanWindow&&) = default;
+	~ScanWindow() override = default;
 	//------------------------------
 
 	// methods
