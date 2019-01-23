@@ -1,25 +1,26 @@
 ﻿#pragma once
 
-#include "controller_base.hpp"
-
 #include <thread>
 
 
-class Controller : public ControllerBase {
+class ViewBase;
+class FileManager;
+
+class Controller {
 public:
 	// special members
 	virtual ~Controller();
 	//------------------------------
 
 	// overriding methods
-	void Run() override;
-	void SearchButtonPressed(const std::string &what_to_search) override;
-	void StopSearchButtonPressed() override;
+	void Run();
+	void SearchButtonPressed(const std::string &what_to_search);
+	void StopSearchButtonPressed();
 	//------------------------------
 
 	// methods
-	void SetModel(ModelBase *model) { _model = model; }
-	void SetView(ViewBase *view) { _view = view; }
+	void SetFileManager(FileManager * const file_manager) { _file_manager = file_manager; }
+	void SetView(ViewBase * const view) { _view = view; }
 	//------------------------------
 private:
 	// methods
@@ -27,7 +28,7 @@ private:
 	//------------------------------
 
 	// member variables
-	ModelBase *_model;
+	FileManager *_file_manager;
 	ViewBase *_view;
 
 	std::thread _running_thread;

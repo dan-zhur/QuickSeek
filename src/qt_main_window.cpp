@@ -9,11 +9,10 @@ MainWindow::MainWindow(ViewBase *view, QWidget *parent)
 	ui.setupUi(this);
 	ui.listView->setModel(&_stringlistmodel);
 
-	QObject::connect(this, SIGNAL(Addstd::stringSignal(Qstd::string)), SLOT(Addstd::stringSlot(Qstd::string)), Qt::QueuedConnection);
+	QObject::connect(this, SIGNAL(AddStringSignal(QString)), SLOT(AddStringSlot(QString)), Qt::QueuedConnection);
 	QObject::connect(this, SIGNAL(ShowSignal()), SLOT(ShowSlot()), Qt::QueuedConnection);
 	QObject::connect(this, SIGNAL(CloseSignal()), SLOT(CloseSlot()), Qt::QueuedConnection);
 	QObject::connect(ui.pushButton, SIGNAL(clicked()), this, SLOT(ButtonClicked()), Qt::QueuedConnection);
-	QObject::connect(ui.listView, SIGNAL(doubleClicked(const QModelIndex&)), this, SLOT(ListDoubleClicked(const QModelIndex&)), Qt::QueuedConnection);
 }
 
 
@@ -38,7 +37,7 @@ void MainWindow::CloseSlot() {
 
 
 void MainWindow::AddPathToList(QString prefix) {
-	emit AddStringSignal(prefix); // to be called in UI-thread
+	emit AddStringSignal(prefix);
 }
 
 
@@ -50,13 +49,6 @@ void MainWindow::ClearList() {
 void MainWindow::AddStringSlot(QString str) {
 	_path_stringlist.append(str);
 	_stringlistmodel.setStringList(_path_stringlist);
-}
-
-
-void MainWindow::ListDoubleClicked(const QModelIndex &index) {
-	/*int x = index.row();
-	QProcess *process = new QProcess();
-	process->startDetached(QDir::rootPath() + "Windows/system32/explorer.exe " + "\"" + l[x] + "\"");*/
 }
 
 

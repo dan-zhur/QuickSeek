@@ -29,32 +29,25 @@ void PrefixTree::AddString(Iterator begin, Iterator end) {
 }
 
 
-template<typename Function>
-void PrefixTree::SearchByPrefix(const std::string &prefix, Function callback) {
-	_SearchByPrefixHelper(prefix, callback);
-}
-
-
-template<typename Function>
-void PrefixTree::_SearchByPrefixHelper(std::string prefix, Function callback) {
+template<typename OutputIterator>
+void PrefixTree::SearchByPrefix(const std::string &prefix, OutputIterator out_iter) {
 	if(_Node *ptr = SkipToPrefixEnd(prefix)) { // if we got such prefix
-		_GoSearch(ptr, callback, prefix);
-		callback(std::string{}); // shows that search is finished
+		std::string prefix_copy = prefix;
+		_GoSearch(ptr, out_iter, prefix_copy);
 	}
 }
 
-
 // TODO: write non-recursive version
-template<typename Function>
-void PrefixTree::_GoSearch(_Node *ptr, Function callback, std::string &str) {
+template<typename OutputIterator>
+void PrefixTree::_GoSearch(_Node *ptr, OutputIterator out_iter, std::string &str) {
 	// if current prefix is the end for some string
 	if(ptr->_is_last_node) {
-		callback(str);
+		*out_iter++ = str;
 	}
 
 	for(const std::pair<char, _Node*> &it : ptr->_child_nodes) {
 		str.push_back(it.first);
-		_GoSearch(it.second, callback, str);
+		_GoSearch(it.second, out_iter, str);
 		str.pop_back();
 	}
 }

@@ -1,8 +1,10 @@
 ﻿#include "controller.hpp"
+#include "file_manager.hpp"
+#include "view_base.hpp"
 
 
 Controller::~Controller() {
-	_model->StopSearch();
+	_file_manager->StopSearch();
 	if(_running_thread.joinable()) {
 		_running_thread.join();
 	}
@@ -15,19 +17,19 @@ void Controller::Run() {
 
 
 void Controller::_RunHelper() {
-	_model->ScanFileSystem();
+	_file_manager->ScanFileSystem();
 	_view->CloseScanWindow();
 	_view->ShowMainWindow();
 }
 
 
 void Controller::SearchButtonPressed(const std::string &what_to_search) {
-	_model->StopSearch();
+	_file_manager->StopSearch();
 	_view->ClearList();
-	_model->SearchPrefix(what_to_search, std::bind(&ViewBase::AddPathToList, _view, std::placeholders::_1));
+	_file_manager->SearchPrefix(what_to_search);
 }
 
 
 void Controller::StopSearchButtonPressed() {
-	_model->StopSearch();
+	_file_manager->StopSearch();
 }

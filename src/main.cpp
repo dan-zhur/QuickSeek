@@ -1,4 +1,4 @@
-﻿#include "model.hpp"
+﻿#include "file_manager.hpp"
 #include "controller.hpp"
 #include "qt_view.hpp"
 
@@ -8,15 +8,15 @@
 int main(int argc, char *argv[]) {
 	QApplication a(argc, argv);
 
-	Model model;
 	QtView view;
+	FileManager manager;
 	Controller controller;
 	
-	model.SetView(&view);
+	manager.SetView(&view);
 
 	view.SetController(&controller);
 
-	controller.SetModel(&model);
+	controller.SetFileManager(&manager);
 	controller.SetView(&view);
 
 	controller.Run();

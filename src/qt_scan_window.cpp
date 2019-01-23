@@ -5,7 +5,7 @@ ScanWindow::ScanWindow(QWidget *parent)
 	: QWidget(parent) {
 	ui.setupUi(this);
 
-	QObject::connect(this, SIGNAL(SetDiskLetterSignal(QChar)), SLOT(SetDiskLetterSlot(QChar)), Qt::QueuedConnection);
+	QObject::connect(this, SIGNAL(SetDiskLetterSignal(std::string)), SLOT(SetDiskLetterSlot(std::string)), Qt::QueuedConnection);
 	QObject::connect(this, SIGNAL(ShowSignal()), SLOT(ShowSlot()), Qt::QueuedConnection);
 	QObject::connect(this, SIGNAL(CloseSignal()), SLOT(CloseSlot()), Qt::QueuedConnection);
 }

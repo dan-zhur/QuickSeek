@@ -18,10 +18,10 @@ find_package(Qt5Widgets CONFIG REQUIRED)
 include_directories(./src)
 include_directories(./forms)
 
-set(quick_seek_SRC
+set(quick_seek_SOURCES
   src/main.cpp
   src/controller.cpp
-  src/model.cpp
+  src/file_manager.cpp
   src/prefix_tree.cpp
   src/qt_main_window.cpp
   src/qt_scan_window.cpp
@@ -32,9 +32,7 @@ set(quick_seek_SRC
 
 set(quick_seek_HEADERS
   src/controller.hpp
-  src/controller_base.hpp
-  src/model.hpp
-  src/model_base.hpp
+  src/file_manager.hpp
   src/prefix_tree.hpp
   src/qt_main_window.hpp
   src/qt_scan_window.hpp
@@ -47,5 +45,5 @@ set(quick_seek_HEADERS
   src/prefix_tree.tpp
 )
 
-add_executable(quick_seek WIN32 ${quick_seek_SRC} ${quick_seek_HEADERS})
+add_executable(quick_seek WIN32 ${quick_seek_SOURCES} ${quick_seek_HEADERS})
 target_link_libraries(quick_seek Qt5::Widgets)

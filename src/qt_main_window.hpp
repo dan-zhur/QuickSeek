@@ -31,7 +31,6 @@ signals:
 private slots:
 	void AddStringSlot(QString str);
 	void ButtonClicked();
-	void ListDoubleClicked(const QModelIndex &index);
 	void ShowSlot();
 	void CloseSlot();
 

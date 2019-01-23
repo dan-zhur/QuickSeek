@@ -20,8 +20,8 @@ public:
 	template<typename Iterator>
 	void AddString(Iterator begin, Iterator end);
 
-	template<typename Function>
-	void SearchByPrefix(const std::string &prefix, Function callback);
+	template<typename OutputIterator>
+	void SearchByPrefix(const std::string &prefix, OutputIterator out_iter);
 	//------------------------------
 private:
 	// types
@@ -44,14 +44,10 @@ private:
 	_Node* SkipToPrefixEnd(const std::string &prefix);
 
 	/*
-	For prefix, runs callback for all child nodes that are ends for
-	some strings.
+	Writes to out_iter all file names, that are children of ptr.
 	*/
-	template<typename Function>
-	void _SearchByPrefixHelper(std::string prefix, Function callback);
-
-	template<typename Function>
-	void _GoSearch(_Node *ptr, Function callback, std::string &str);
+	template<typename OutputIterator>
+	void _GoSearch(_Node *ptr, OutputIterator out_iter, std::string &str);
 
 	_Node* _FindSymbolNodeAddress(const char symbol, const _Node::ChildrenContainer &nodes);
 	//------------------------------

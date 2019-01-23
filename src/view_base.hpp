@@ -1,12 +1,9 @@
 ﻿#pragma once
 
-#include "controller_base.hpp"
+#include "controller.hpp"
 
 #include <string>
 
-
-class ModelBase;
-class ControllerBase;
 
 class ViewBase
 {
@@ -26,11 +23,11 @@ public:
 	//------------------------------
 
 	//methods
-	void SetController(ControllerBase *controller) { _controller = controller; }
+	void SetController(Controller * const controller) { _controller = controller; }
 	//------------------------------
 
 protected:
 	// member variables
-	ControllerBase *_controller{ nullptr };
+	Controller *_controller{ nullptr };
 	//------------------------------
 };
