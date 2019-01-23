@@ -20,14 +20,12 @@ public:
 	FileManager& operator=(FileManager&&) = default;
 	~FileManager() = default;
 
-	// pure virtual functions
+	// methods
+	void SetView(ViewBase * const view);
+
 	void ScanFileSystem();
 	void SearchPrefix(const std::string &prefix);
 	void StopSearch();
-	//------------------------------
-
-	// methods
-	void SetView(ViewBase *view);
 	//------------------------------
 
 protected:

@@ -17,15 +17,14 @@ public:
 	virtual ~Controller();
 	//------------------------------
 
-	// overriding methods
-	void Run();
-	void SearchButtonPressed(const std::string &what_to_search);
-	void StopSearchButtonPressed();
-	//------------------------------
 
 	// methods
 	void SetFileManager(FileManager * const file_manager);
 	void SetView(ViewBase * const view);
+
+	void Run();
+	void SearchButtonPressed(const std::string &what_to_search);
+	void StopSearchButtonPressed();
 	//------------------------------
 private:
 	// methods
