@@ -65,7 +65,7 @@ namespace {
 }
 
 
-void FileManager::SetView(ViewBase * const view) {
+void FileManager::SetView(ViewBase * const view) noexcept {
 	_view = view;
 }
 

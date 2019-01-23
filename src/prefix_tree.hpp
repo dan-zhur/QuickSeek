@@ -38,14 +38,14 @@ private:
 	//------------------------------
 
 	// methods
-	void _DisposeMemory(_Node *ptr);
+	void _DisposeMemory(_Node *ptr) noexcept;
 
 	/*
 	Goes through a tree by a way, defined by string.
 	If succeeded, returns _Node*, pointing to last string symbol.
 	If failed, returns nullptr.
 	*/
-	_Node* SkipToPrefixEnd(const std::string &prefix);
+	_Node* SkipToPrefixEnd(const std::string &prefix) noexcept;
 
 	/*
 	Writes to out_iter all file names, that are children of ptr.
@@ -53,7 +53,7 @@ private:
 	template<typename OutputIterator>
 	void _GoSearch(_Node *ptr, OutputIterator out_iter, std::string &str);
 
-	_Node* _FindSymbolNodeAddress(const char symbol, const _Node::ChildrenContainer &nodes);
+	_Node* _FindSymbolNodeAddress(const char symbol, const _Node::ChildrenContainer &nodes) noexcept;
 	//------------------------------
 
 

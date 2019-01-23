@@ -21,7 +21,7 @@ public:
 	~FileManager() = default;
 
 	// methods
-	void SetView(ViewBase * const view);
+	void SetView(ViewBase * const view) noexcept;
 
 	void ScanFileSystem();
 	void SearchPrefix(const std::string &prefix);

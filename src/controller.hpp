@@ -6,7 +6,7 @@
 class ViewBase;
 class FileManager;
 
-class Controller {
+class Controller final {
 public:
 	// special members
 	Controller() = default;
@@ -16,11 +16,10 @@ public:
 	Controller& operator=(Controller&&) = default;
 	virtual ~Controller();
 	//------------------------------
-
-
+	
 	// methods
-	void SetFileManager(FileManager * const file_manager);
-	void SetView(ViewBase * const view);
+	void SetFileManager(FileManager * const file_manager) noexcept;
+	void SetView(ViewBase * const view) noexcept;
 
 	void Run();
 	void SearchButtonPressed(const std::string &what_to_search);

@@ -11,12 +11,12 @@ Controller::~Controller() {
 }
 
 
-void Controller::SetFileManager(FileManager * const file_manager) { 
+void Controller::SetFileManager(FileManager * const file_manager) noexcept { 
 	_file_manager = file_manager; 
 }
 
 
-void Controller::SetView(ViewBase * const view) {
+void Controller::SetView(ViewBase * const view) noexcept {
 	_view = view;
 }
 
