@@ -30,7 +30,7 @@ void PrefixTree::AddString(Iterator begin, Iterator end) {
 
 
 template<typename OutputIterator>
-void PrefixTree::SearchByPrefix(const std::string &prefix, OutputIterator out_iter) {
+void PrefixTree::SearchByPrefix(const std::string &prefix, OutputIterator out_iter) const {
 	if(_Node *ptr = SkipToPrefixEnd(prefix)) { // if we got such prefix
 		std::string prefix_copy = prefix;
 		_GoSearch(ptr, out_iter, prefix_copy);
@@ -39,7 +39,7 @@ void PrefixTree::SearchByPrefix(const std::string &prefix, OutputIterator out_it
 
 // TODO: write non-recursive version
 template<typename OutputIterator>
-void PrefixTree::_GoSearch(_Node *ptr, OutputIterator out_iter, std::string &str) {
+void PrefixTree::_GoSearch(_Node *ptr, OutputIterator out_iter, std::string &str) const {
 	// if current prefix is the end for some string
 	if(ptr->_is_last_node) {
 		*out_iter++ = str;

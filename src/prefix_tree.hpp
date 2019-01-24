@@ -25,7 +25,7 @@ public:
 	void AddString(Iterator begin, Iterator end);
 
 	template<typename OutputIterator>
-	void SearchByPrefix(const std::string &prefix, OutputIterator out_iter);
+	void SearchByPrefix(const std::string &prefix, OutputIterator out_iter) const;
 	//------------------------------
 private:
 	// types
@@ -45,15 +45,15 @@ private:
 	If succeeded, returns _Node*, pointing to last string symbol.
 	If failed, returns nullptr.
 	*/
-	_Node* SkipToPrefixEnd(const std::string &prefix) noexcept;
+	_Node* SkipToPrefixEnd(const std::string &prefix) const noexcept;
 
 	/*
 	Writes to out_iter all file names, that are children of ptr.
 	*/
 	template<typename OutputIterator>
-	void _GoSearch(_Node *ptr, OutputIterator out_iter, std::string &str);
+	void _GoSearch(_Node *ptr, OutputIterator out_iter, std::string &str) const;
 
-	_Node* _FindSymbolNodeAddress(const char symbol, const _Node::ChildrenContainer &nodes) noexcept;
+	_Node* _FindSymbolNodeAddress(const char symbol, const _Node::ChildrenContainer &nodes) const noexcept;
 	//------------------------------
 
 
