@@ -46,11 +46,13 @@ namespace {
 				do_we_stop { do_we_stop	} {
 		}
 
+		OutputIterator(const OutputIterator&) = default;
+
 		AssignmentProxy<Function>& operator*() {
 			return assignment_proxy;
 		}
 
-		OutputIterator& operator++(int) {
+		OutputIterator operator++(int) {
 			return *this;
 		}
 
