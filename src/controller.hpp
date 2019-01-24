@@ -14,7 +14,7 @@ public:
 	Controller(Controller&&) = default;
 	Controller& operator=(const Controller&) = delete;
 	Controller& operator=(Controller&&) = default;
-	virtual ~Controller();
+	~Controller();
 	//------------------------------
 	
 	// methods

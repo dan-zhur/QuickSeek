@@ -17,13 +17,13 @@ namespace {
 		as f(value), where value is assigned value.
 	*/
 	template<typename Function>
-	struct StringProxy {
-		StringProxy(Function function)
+	struct AssignmentProxy {
+		AssignmentProxy(Function function)
 			: handler{ function } {
 		}
 
 		template<typename T>
-		StringProxy& operator=(T &&new_value) {
+		AssignmentProxy& operator=(T &&new_value) {
 			handler(std::forward<T>(new_value));
 			return *this;
 		}
@@ -42,12 +42,12 @@ namespace {
 	template<typename Function>
 	struct OutputIterator {
 		OutputIterator(std::atomic<bool> &do_we_stop, Function string_handler)
-			: string_proxy{ string_handler },
+			: assignment_proxy{ string_handler },
 				do_we_stop { do_we_stop	} {
 		}
 
-		StringProxy<Function>& operator*() {
-			return string_proxy;
+		AssignmentProxy<Function>& operator*() {
+			return assignment_proxy;
 		}
 
 		OutputIterator& operator++(int) {
@@ -58,7 +58,7 @@ namespace {
 			return do_we_stop;
 		}
 
-		StringProxy<Function> string_proxy;
+		AssignmentProxy<Function> assignment_proxy;
 		std::atomic<bool> &do_we_stop;
 	};
 	//------------------------------
