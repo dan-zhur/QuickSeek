@@ -22,7 +22,7 @@ void PrefixTree::_DisposeMemory(PrefixTree::_Node *ptr) noexcept {
 
 PrefixTree::_Node* PrefixTree::SkipToPrefixEnd(const std::string &prefix) const noexcept {
 	_Node *ptr = _root;
-	for(const char c : prefix)	{
+	for(const char c : prefix) {
 		_Node* cnode = _FindSymbolNodeAddress(c, ptr->_child_nodes);
 		if(cnode == nullptr) {
 			return nullptr;
@@ -35,8 +35,8 @@ PrefixTree::_Node* PrefixTree::SkipToPrefixEnd(const std::string &prefix) const 
 }
 
 
-PrefixTree::_Node* PrefixTree::_FindSymbolNodeAddress(const char symbol, 
-		const _Node::ChildrenContainer &nodes) const noexcept {
+PrefixTree::_Node* PrefixTree::_FindSymbolNodeAddress(const char symbol,
+	const _Node::ChildrenContainer &nodes) const noexcept {
 	for(const auto &it : nodes) {
 		if(it.first == symbol) return it.second;
 	}
