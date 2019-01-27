@@ -41,6 +41,7 @@ void PrefixTree::SearchByPrefix(const std::string &prefix, OutputIterator out_it
 template<typename OutputIterator>
 void PrefixTree::_GoSearch(_Node *ptr, OutputIterator out_iter, std::string &str) const {
 	// if current prefix is the end for some string
+	if(!out_iter) return;
 	if(ptr->_is_last_node) {
 		*out_iter++ = str;
 	}

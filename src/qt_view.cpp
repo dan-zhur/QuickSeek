@@ -23,7 +23,7 @@ void QtView::ShowScanWindow(const std::string &disk_letter) {
 
 
 void QtView::SetScanningDiskLetter(const std::string &disk_letter) {
-	_scan_window.SetDiskLetter(disk_letter);
+	_scan_window.SetDiskLetter(QString::fromUtf8(disk_letter.c_str()));
 }
 
 

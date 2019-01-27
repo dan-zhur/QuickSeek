@@ -18,8 +18,10 @@ namespace {
 	*/
 	template<typename Function>
 	struct AssignmentProxy {
-		AssignmentProxy(Function function)
-			: handler{ function } {
+
+		template<typename FunctionParam>
+		AssignmentProxy(FunctionParam &&function)
+			: handler{ std::forward<FunctionParam>(function) } {
 		}
 
 		template<typename T>
@@ -41,8 +43,8 @@ namespace {
 	*/
 	template<typename Function>
 	struct OutputIterator {
-		OutputIterator(std::atomic<bool> &do_we_stop, Function string_handler)
-			: assignment_proxy{ string_handler },
+		OutputIterator(std::atomic<bool> &do_we_stop, Function &&string_handler)
+			: assignment_proxy{ std::forward<Function>(string_handler) },
 				do_we_stop { do_we_stop	} {
 		}
 
@@ -57,7 +59,7 @@ namespace {
 		}
 
 		operator bool() {
-			return do_we_stop;
+			return !do_we_stop;
 		}
 
 		AssignmentProxy<Function> assignment_proxy;

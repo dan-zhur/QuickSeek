@@ -1,11 +1,11 @@
 ﻿#include "qt_scan_window.hpp"
 
 
-ScanWindow::ScanWindow(QWidget *parent)
+ScanWindow::ScanWindow(QWidget * const parent)
 	: QWidget(parent) {
 	ui.setupUi(this);
 
-	QObject::connect(this, SIGNAL(SetDiskLetterSignal(std::string)), SLOT(SetDiskLetterSlot(std::string)), Qt::QueuedConnection);
+	QObject::connect(this, SIGNAL(SetDiskLetterSignal(const QString&)), SLOT(SetDiskLetterSlot(const QString&)), Qt::QueuedConnection);
 	QObject::connect(this, SIGNAL(ShowSignal()), SLOT(ShowSlot()), Qt::QueuedConnection);
 	QObject::connect(this, SIGNAL(CloseSignal()), SLOT(CloseSlot()), Qt::QueuedConnection);
 }
@@ -31,10 +31,11 @@ void ScanWindow::CloseSlot() {
 }
 
 
-void ScanWindow::SetDiskLetter(std::string disk_letter) {
+void ScanWindow::SetDiskLetter(const QString &disk_letter) {
 	emit SetDiskLetterSignal(disk_letter);
 }
 
-void ScanWindow::SetDiskLetterSlot(std::string disk_letter) {
-	ui.scannedDiskLabel->setText(QString::fromUtf8(disk_letter.c_str()));
+
+void ScanWindow::SetDiskLetterSlot(const QString &disk_letter) {
+	ui.scannedDiskLabel->setText(disk_letter);
 }

@@ -5,12 +5,12 @@
 #include <QWidget>
 
 
-class ScanWindow : public QWidget {
+class ScanWindow : protected QWidget {
 	Q_OBJECT
 
 public:
 	// special members
-	ScanWindow(QWidget *parent = Q_NULLPTR);
+	ScanWindow(QWidget * const parent = Q_NULLPTR);
 	ScanWindow(const ScanWindow&) = delete;
 	ScanWindow(ScanWindow&&) = default;
 	ScanWindow& operator=(const ScanWindow&) = delete;
@@ -19,18 +19,18 @@ public:
 	//------------------------------
 
 	// methods
-	void SetDiskLetter(std::string disk_letter);
+	void SetDiskLetter(const QString &disk_letter);
 	void Show();
 	void Close();
 	//------------------------------
 
 signals:
-	void SetDiskLetterSignal(std::string disk_letter);
+	void SetDiskLetterSignal(const QString &disk_letter);
 	void ShowSignal();
 	void CloseSignal();
 
 private slots:
-	void SetDiskLetterSlot(std::string disk_letter);
+	void SetDiskLetterSlot(const QString &disk_letter);
 	void ShowSlot();
 	void CloseSlot();
 
